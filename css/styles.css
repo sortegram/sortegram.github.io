@@ -938,7 +938,7 @@ Download Now
 ========================================================================== */
 .download {
     padding: 120px 0;
-    background-color: #3f6184;
+    background-color: #002301;
 }
 .download h1 {
     margin: 0 0 15px 0;
@@ -951,7 +951,8 @@ Download Now
 Footer
 ========================================================================== */
 footer {
-    padding: 100px 0
+    padding: 100px 0;
+    background: #005803;
 }
 footer p {
     color: #c7cacc;
@@ -968,7 +969,7 @@ footer li {
     font-weight: 400;
 }
 footer li a {
-    color: #3f6184
+    color: #fff
 }
 footer li:last-child {
     margin-right: 0
