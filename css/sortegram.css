@@ -78,7 +78,11 @@ input, button {
   z-index: -1;
 }
 
+<<<<<<< HEAD
 #sg-manage {
+=======
+#manage {
+>>>>>>> origin/master
   background-color: transparent;
   width: 100%;
   height: 100%;
@@ -112,7 +116,11 @@ input, button {
   left: -110%
 }
 
+<<<<<<< HEAD
 #c-raffle {
+=======
+#classic-raffle {
+>>>>>>> origin/master
   background-color: rgba(255, 255, 255, 0.3);
   background-image: url(../img/appbar.sort.numeric.png);
   background-size: 80%;
@@ -135,7 +143,11 @@ input, button {
   -ms-transform: translate(-50%,-50%);
   -o-transform: translate(-50%,-50%);
 }
+<<<<<<< HEAD
 #c-raffle:active, #classic-raffle:hover {
+=======
+#classic-raffle:active, #classic-raffle:hover {
+>>>>>>> origin/master
   background-color: rgba(0,0,0,0.4);
 }
 #c-raffle::after {
@@ -147,7 +159,11 @@ input, button {
   width: 100%;
 }
 
+<<<<<<< HEAD
 #sg-raffle {
+=======
+#sortegram-raffle {
+>>>>>>> origin/master
   background-color: rgba(255, 255, 255, 0.3);
   background-image: url(../img/logo/white/SG-icon-144.png);
   background-size: 60%;
@@ -171,7 +187,11 @@ input, button {
   -ms-transform: translate(-50%,-50%);
   -o-transform: translate(-50%,-50%);
 }
+<<<<<<< HEAD
 #sg-raffle:active, #sortegram-raffle:hover {
+=======
+#sortegram-raffle:active, #sortegram-raffle:hover {
+>>>>>>> origin/master
   background-color: rgba(0,0,0,0.4);
 }
 #sg-raffle::after {
@@ -1175,10 +1195,17 @@ background-color: #FF00CB;
     left: -webkit-calc(50% - 75px);
     left: -moz-calc(50% - 75px);
     left: -ms-calc(50% - 75px);
+<<<<<<< HEAD
     animation: loader-spinner 1s infinite linear;
     -webkit-animation: loader-spinner 1s infinite linear;
     -moz-animation: loader-spinner 1s infinite linear;
     -ms-animation: loader-spinner 1s infinite linear;
+=======
+    animation: loader-spinner 1s infinite;
+    -webkit-animation: loader-spinner 1s infinite;
+    -moz-animation: loader-spinner 1s infinite;
+    -ms-animation: loader-spinner 1s infinite;
+>>>>>>> origin/master
 }
 
 @keyframes loader-spinner {
