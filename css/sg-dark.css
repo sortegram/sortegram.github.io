@@ -1,0 +1,17 @@
+body, html {
+  color: #FFF;
+}
+
+#cover {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: .4s ease;
+  -webkit-transition: .4s ease;
+  -moz-transition: .4s ease;
+  -ms-transition: .4s ease;
+  -o-transition: .4s ease;
+  z-index: -3;
+}

@@ -1,8 +1,6 @@
 
 body, html {
   font-family: Segoe UI;
-  background-color: #FFF;
-  color: #fff;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -38,6 +36,10 @@ body, html {
               url(../img/appbar.save.png),
               url(../img/appbar.sort.numeric.png),
               url(../img/appbar.trophy.png),
+              url(../img/cara.png),
+              url(../img/coroa.png),
+              url(../img/cc.png),
+              url(../img/appbar.transform.rotate.counterclockwise.png),
               url(../img/ic_arrow_forward_white_24dp_2x.png),
               url(../img/ic_done_white_24dp_1x.png);
 }
@@ -46,23 +48,95 @@ input, button {
   outline: none;
 }
 
-#cover {
-  background-color: #FFF;
-  background-size: auto 100%;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transition: .4s ease;
-  -webkit-transition: .4s ease;
-  -moz-transition: .4s ease;
-  -ms-transition: .4s ease;
-  -o-transition: .4s ease;
-  z-index: -3;
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    rgba(255, 255, 255, 0.7);
 }
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    rgba(255, 255, 255, 0.7);
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    rgba(255, 255, 255, 0.7);
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    rgba(255, 255, 255, 0.7);
+}
+
+
+input[type="checkbox"]:not(:checked),
+input[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+input[type="checkbox"]:not(:checked) + label,
+input[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 75px;
+  cursor: pointer;
+}
+input[type="checkbox"]:not(:checked) + label:before,
+input[type="checkbox"]:checked + label:before,
+input[type="checkbox"]:not(:checked) + label:after,
+input[type="checkbox"]:checked + label:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+}
+input[type="checkbox"]:not(:checked) + label:before,
+input[type="checkbox"]:checked + label:before {
+  left:0;
+  top: -3px;
+  width: 70px;
+  height: 31px;
+  background: #FFF;
+  transition: background-color .2s;
+}
+input[type="checkbox"]:not(:checked) + label:after,
+input[type="checkbox"]:checked + label:after {
+  width: 20px;
+  height: 20px;
+  transition: all .2s;
+  border: 2px solid #A2A2A2;
+  border-radius: 5px;
+  top: 0px;
+  left: 5px;
+}
+
+/* on checked */
+input[type="checkbox"]:checked + label:before {
+  background: #000;
+}
+input[type="checkbox"]:checked + label:after {
+  background: #A2A2A2;
+  top: 0px; left: 41px;
+}
+
+input[type="checkbox"]:checked + label .ui,
+input[type="checkbox"]:not(:checked) + label .ui:before,
+input[type="checkbox"]:checked + label .ui:after {
+  position: absolute;
+  left: 6px;
+  width: 70px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 22px;
+  transition: all .2s;
+}
+input[type="checkbox"]:not(:checked) + label .ui:before {
+  content: "off";
+  left: 32px
+}
+input[type="checkbox"]:checked + label .ui:after {
+  content: "on";
+  color: #fff;
+}
+input[type="checkbox"]:focus + label:before {
+  box-sizing: border-box;
+}
+
+
 
 #home {
   background-color: transparent;
@@ -118,6 +192,41 @@ input, button {
   left: -110%
 }
 
+#sg-raffle {
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: url(../img/logo/white/SG-icon-144.png);
+  background-size: 60%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border: 2px solid #fff;
+  border-radius: 25% 25% 50% 50%;
+  -webkit-border-radius: 25% 25% 50% 50%;
+  -moz-border-radius: 25% 25% 50% 50%;
+  -ms-border-radius: 25% 25% 50% 50%;
+  -o-border-radius: 25% 25% 50% 50%;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+    top: 193px;
+    left: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+}
+#sg-raffle:active, #sortegram-raffle:hover {
+  background-color: rgba(0,0,0,0.4);
+}
+#sg-raffle::after {
+  content: "Sortegram";
+  color: currentColor;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  width: 100%;
+}
+
 #c-raffle {
   background-color: rgba(255, 255, 255, 0.3);
   background-image: url(../img/appbar.sort.numeric.png);
@@ -132,8 +241,8 @@ input, button {
   -o-border-radius: 50% 50% 25% 25%;
   width: 150px;
   height: 150px;
-  position: relative;
-    top: 35%;
+  position: absolute;
+    top: 364px;
     left: 50%;
   transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
@@ -145,47 +254,66 @@ input, button {
   background-color: rgba(0,0,0,0.4);
 }
 #c-raffle::after {
-  content: "Sorteio clássico";
-  color: #fff;
+  content: "Clássico";
+  color: currentColor;
   position: absolute;
   bottom: 10px;
   left: 0px;
   width: 100%;
 }
 
-#sg-raffle {
+#cc-raffle {
   background-color: rgba(255, 255, 255, 0.3);
-  background-image: url(../img/logo/white/SG-icon-144.png);
-  background-size: 60%;
+  background-image: url(../img/cc.png);
+  background-size: 65%;
   background-position: 50%;
   background-repeat: no-repeat;
   border: 2px solid #fff;
-  border-radius: 50% 50% 25% 25%;
-  -webkit-border-radius: 50% 50% 25% 25%;
-  -moz-border-radius: 50% 50% 25% 25%;
-  -ms-border-radius: 50% 50% 25% 25%;
-  -o-border-radius: 50% 50% 25% 25%;
-  width: 200px;
-  height: 200px;
-  position: relative;
-    top: 35%;
-    left: 50%;
+  border-radius: 25% 50% 50% 25%;
+  -webkit-border-radius: 25% 50% 50% 25%;
+  -moz-border-radius: 25% 50% 50% 25%;
+  -ms-border-radius: 25% 50% 50% 25%;
+  -o-border-radius: 25% 50% 50% 25%;
+  width: 90px;
+  height: 90px;
+  position: absolute;
+    top: 279px;
+    left: 70px;
   transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   -moz-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   -o-transform: translate(-50%,-50%);
 }
-#sg-raffle:active, #sortegram-raffle:hover {
+#cc-raffle:active, #classic-raffle:hover {
   background-color: rgba(0,0,0,0.4);
 }
-#sg-raffle::after {
-  content: "Sorteio Sortegram";
-  color: #fff;
+
+#b-raffle {
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: url(../img/appbar.sort.numeric.png);
+  background-size: 80%;
+  background-position: 50% 1%;
+  background-repeat: no-repeat;
+  border: 2px solid #fff;
+  border-radius: 50% 25% 25% 50%;
+  -webkit-border-radius: 50% 25% 25% 50%;
+  -moz-border-radius: 50% 25% 25% 50%;
+  -ms-border-radius: 50% 25% 25% 50%;
+  -o-border-radius: 50% 25% 25% 50%;
+  width: 90px;
+  height: 90px;
   position: absolute;
-  bottom: 5px;
-  left: 0px;
-  width: 100%;
+    top: 279px;
+    right: -25px;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+}
+#b-raffle:active, #classic-raffle:hover {
+  background-color: rgba(0,0,0,0.4);
 }
 
 
@@ -193,7 +321,7 @@ input, button {
     font-size: 24pt;
     font-family: Segoe UI Light, Segoe UI, sans-serif;
     text-align: center;
-    color: #fff;
+    color: currentColor;
     width: calc(100% - 100px);
     width: -webkit-calc(100% - 100px);
     width: -moz-calc(100% - 100px);
@@ -313,7 +441,7 @@ input, button {
 #sidebar {
   position: fixed;
   background-color: #148000;
-  color: #fff;
+  color: currentColor;
   width: 50%;
   height: calc(100% - 50px);
   height: -webkit-calc(100% - 50px);
@@ -428,36 +556,9 @@ background-color: #FF00CB;
   font-size: 40px;
 }
 
-#classic {
-  color: #fff;
-  background-color: transparent;
-  width: 100%;
-  max-width: 100%;
-  min-width: 90%;
-  min-height: 100%;
-  text-align: center;
-  position: fixed;
-  top: 0;
-  padding: 1px;
-  padding-top: 80px;
-  padding-bottom: 30px;
-  box-shadow: 0px 0px 20px #000;
-  -webkit-box-shadow: 0px 0px 20px #000;
-  -moz-box-shadow: 0px 0px 20px #000;
-  -ms-box-shadow: 0px 0px 20px #000;
-  -o-box-shadow: 0px 0px 20px #000;
-  transition: .2s ease;
-  -webkit-transition: .2s ease;
-  -moz-transition: .2s ease;
-  -ms-transition: .2s ease;
-  -o-transition: .2s ease;
-  overflow-y: auto;
-  z-index: -1;
-}
-
 #sortegram {
   background-color: transparent;
-  color: #fff;
+  color: currentColor;
   width: 100%;
   max-width: 100%;
   min-height: calc(100% - 70px);
@@ -486,7 +587,7 @@ background-color: #FF00CB;
 
 #start-sortegram {
   background-color: transparent;
-  color: #fff;
+  color: currentColor;
   width: 100%;
   max-width: 100%;
   min-height: 100%;
@@ -500,6 +601,89 @@ background-color: #FF00CB;
   -o-transition: .2s ease;
   z-index: -1;
 }
+
+#classic {
+  color: currentColor;
+  background-color: transparent;
+  width: 100%;
+  max-width: 100%;
+  min-width: 90%;
+  min-height: 100%;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  padding: 1px;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  box-shadow: 0px 0px 20px #000;
+  -webkit-box-shadow: 0px 0px 20px #000;
+  -moz-box-shadow: 0px 0px 20px #000;
+  -ms-box-shadow: 0px 0px 20px #000;
+  -o-box-shadow: 0px 0px 20px #000;
+  transition: .2s ease;
+  -webkit-transition: .2s ease;
+  -moz-transition: .2s ease;
+  -ms-transition: .2s ease;
+  -o-transition: .2s ease;
+  overflow-y: auto;
+  z-index: -1;
+}
+
+#h-o-t {
+  color: currentColor;
+  background-color: transparent;
+  width: 100%;
+  max-width: 100%;
+  min-width: 90%;
+  min-height: 100%;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  padding: 1px;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  box-shadow: 0px 0px 20px #000;
+  -webkit-box-shadow: 0px 0px 20px #000;
+  -moz-box-shadow: 0px 0px 20px #000;
+  -ms-box-shadow: 0px 0px 20px #000;
+  -o-box-shadow: 0px 0px 20px #000;
+  transition: .2s ease;
+  -webkit-transition: .2s ease;
+  -moz-transition: .2s ease;
+  -ms-transition: .2s ease;
+  -o-transition: .2s ease;
+  overflow-y: auto;
+  z-index: -1;
+}
+
+#bingo {
+  color: currentColor;
+  background-color: transparent;
+  width: 100%;
+  max-width: 100%;
+  min-width: 90%;
+  min-height: 100%;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  padding: 1px;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  box-shadow: 0px 0px 20px #000;
+  -webkit-box-shadow: 0px 0px 20px #000;
+  -moz-box-shadow: 0px 0px 20px #000;
+  -ms-box-shadow: 0px 0px 20px #000;
+  -o-box-shadow: 0px 0px 20px #000;
+  transition: .2s ease;
+  -webkit-transition: .2s ease;
+  -moz-transition: .2s ease;
+  -ms-transition: .2s ease;
+  -o-transition: .2s ease;
+  overflow-y: auto;
+  z-index: -1;
+}
+
+
 .min-max {
   text-align: center;
   width: 100%;
@@ -510,7 +694,7 @@ background-color: #FF00CB;
 
 .input-min-max {
     background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    color: currentColor;
     font-size: 20px;
     max-width: 100px;
     mwidth: 30%;
@@ -531,7 +715,7 @@ background-color: #FF00CB;
 }
 .input-min-max:focus {
     background-color: rgba(26, 90, 125, 0.73);
-    border: 2px solid #FFFFFF;
+    border: 2px solid #FFF;
 }
 .input-min-max:disabled {
     background-color: rgba(255, 255, 255, 0.6);
@@ -546,7 +730,7 @@ background-color: #FF00CB;
     left: 0%;
     font-size: 30pt;
     background-color: #38D245;
-    color: #fff;
+    color: currentColor;
     border: 0;
     width: 100%;
     padding: 10px;
@@ -559,7 +743,7 @@ background-color: #FF00CB;
 }
 .sort-btn:active {
     background-color: #5181AF;
-    color: #ffffff;
+    color: #FFF;
     transform: scale(.9);
     -webkit-transform: scale(.9);
     -moz-transform: scale(.9);
@@ -568,7 +752,7 @@ background-color: #FF00CB;
 }
 .sort-btn:focus {
     background-color: #5181AF;
-    color: #ffffff;
+    color: #FFF;
 }
 .sort-btn:disabled {
     background-color: #D9D9D9;
@@ -583,10 +767,10 @@ background-color: #FF00CB;
     left: 0%;
     font-size: 16pt;
     background-color: #37BD1E;
-    color: #fff;
+    color: currentColor;
     border: 0;
     padding: 10px;
-    width: 100%;
+    width: 49%;
     transition: .1s ease;
     -webkit-transition: .1s ease;
     -moz-transition: .1s ease;
@@ -596,7 +780,7 @@ background-color: #FF00CB;
 }
 .new-btn:active, .new-btn-manage:active {
     background-color: #5181AF;
-    color: #ffffff;
+    color: #FFF;
     transform: scale(.9);
     -webkit-transform: scale(.9);
     -moz-transform: scale(.9);
@@ -605,7 +789,7 @@ background-color: #FF00CB;
 }
 .new-btn:focus {
     background-color: #5181AF;
-    color: #ffffff;
+    color: #FFF;
 }
 .new-btn:disabled {
     background-color: #D9D9D9;
@@ -619,9 +803,9 @@ background-color: #FF00CB;
     font-size: 16pt;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    color: #FFF;
     border: 0;
-    width: 100%;
+    width: 49%;
     transition: .1s ease;
     -webkit-transition: .1s ease;
     -moz-transition: .1s ease;
@@ -639,7 +823,7 @@ background-color: #FF00CB;
 .back-to-home-btn:focus {
     background-color: #5181AF;
     border: 5px solid #5181AF;
-    color: #ffffff;
+    color: #FFF;
 }
 .back-to-home-btn:disabled {
     background-color: #D9D9D9;
@@ -650,7 +834,7 @@ background-color: #FF00CB;
 
 #c-result {
   background-color: rgba(236, 248, 255, 0.5);
-  color: #FFFFFF;
+  color: currentColor;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.23);
   -webkit-box-shadow: 0 7px 15px rgba(0, 0, 0, 0.23);
   -moz-box-shadow: 0 7px 15px rgba(0, 0, 0, 0.23);
@@ -677,7 +861,7 @@ background-color: #FF00CB;
 #sg-result {
   background-color: rgba(0, 0, 0, 0.3);
   margin-top: 60px;
-  color: #FFFFFF;
+  color: currentColor;
   font-size: 30pt;
   text-align: left;
   padding: 10px;
@@ -747,7 +931,6 @@ background-color: #FF00CB;
 }
 
 #input-username-lbl {
-    color: #66FF73;
     font-size: 10pt;
 }
 
@@ -811,15 +994,14 @@ background-color: #FF00CB;
     -ms-transition: .1s ease;
     -o-transition: .1s ease;
 }
-.input-username-btn:active, .input-username-btn:hover {
+.input-username-btn:active {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
 #user-names {
   counter-reset: user-luck-number;
-  padding-top: 15px;
   margin-bottom: 0;
-  line-height: .2;
+  line-height: 1;
   text-align: left;
   width: 100%;
   max-height: 170px;
@@ -833,7 +1015,7 @@ background-color: #FF00CB;
 
 #user-names dt {
   background-color: rgba(0, 0, 0, 0.2);
-  color: #fff;
+  color: currentColor;
   text-align: left;
   border-bottom: 1px solid #D4D4D4;
   padding-top: 15px;
@@ -888,7 +1070,7 @@ background-color: #FF00CB;
 
 #user-names-2 dt {
   background-color: rgba(0, 0, 0, 0.2);
-  color: #fff;
+  color: currentColor;
   text-align: left;
   border-bottom: 1px solid #D4D4D4;
   padding-top: 15px;
@@ -928,7 +1110,7 @@ background-color: #FF00CB;
 
 #user-names-manage dt {
     background-color: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    color: currentColor;
     text-align: left;
     border-bottom: 1px solid #D4D4D4;
     padding-top: 15px;
@@ -953,20 +1135,18 @@ background-color: #FF00CB;
 }
 
 #number-of-participants {
-    color: #99FFFB;
     font-size: 14pt;
 }
 
 #number-of-participants-2 {
-    color: #99FFFB;
     font-size: 14pt;
 }
 
 .edit {
     font-size: 13pt;
     text-align: center;
-    color: #fff;
     border: 0;
+    color: #FFF;
     background-color: #00B70B;
     background-image: url(../img/appbar.edit.png);
     background-size: auto 80%;
@@ -991,7 +1171,7 @@ background-color: #FF00CB;
 
 #delete-all, .delete {
     font-size: 12pt;
-    color: #fff;
+    color: #FFF;
     border: 0;
     height: 60px;
     width: 49%;
@@ -1045,7 +1225,7 @@ background-color: #FF00CB;
 
 #cancel-btn {
     font-size: 12pt;
-    color: #fff;
+    color: #FFF;
     border: 0;
     height: 60px;
     width: 49%;
@@ -1072,7 +1252,7 @@ background-color: #FF00CB;
 #sg-save {
     font-size: 13pt;
     text-align: center;
-    color: #fff;
+    color: #FFF;
     border: 0;
     background-color: #00B70B;
     background-image: url(../img/appbar.save.png);
@@ -1098,7 +1278,7 @@ background-color: #FF00CB;
 
 #sg-done {
     border: 0;
-    background-color: #00B70B;
+    background-color: rgba(255, 255, 255, 0.5);
     background-image: url(../img/ic_arrow_forward_white_24dp_2x.png);
     background-size: auto 80%;
     background-position: 50%;
@@ -1130,6 +1310,38 @@ background-color: #FF00CB;
 
 #sg-save:disabled, #delete-all:disabled {
     background-color: #BBB;
+}
+
+#sg-refresh {
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-image: url(../img/appbar.transform.rotate.counterclockwise.png);
+    background-size: auto 80%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 0 0 20px;
+    -webkit-border-radius: 0 0 0 20px;
+    -moz-border-radius: 0 0 0 20px;
+    -ms-border-radius: 0 0 0 20px;
+    -o-border-radius: 0 0 0 20px;
+    transition: .1s ease;
+    -webkit-transition: .1s ease;
+    -moz-transition: .1s ease;
+    -ms-transition: .1s ease;
+    -o-transition: .1s ease;
+}
+#sg-refresh:active {
+    background-color: #5181AF;
+    transform: scale(.9);
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -ms-transform: scale(.9);
+    -o-transform: scale(.9);
 }
 
 #trophy {
@@ -1192,6 +1404,96 @@ background-color: #FF00CB;
   0% {-o-transform: rotate(0deg);}
   100% {-o-transform: rotate(360deg)}
 }
+
+
+
+
+
+.flip-container {
+	perspective: 1000;
+}
+
+.flip-container, .cara, .coroa {
+	width: 200px;
+	height: 200px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.flipper {
+  margin-left: 30%;
+  width: 100%;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.cara, .coroa {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.cara {
+  background-color: rgba(255,255,255,1);
+  background-image: url(../img/cara.png);
+  background-size: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+	z-index: 2;
+	transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+}
+
+.coroa {
+  background-color: rgba(0,0,0,1);
+  background-image: url(../img/coroa.png);
+  background-size: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+	transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+}
+
+.rotate-coin {
+  animation: coin-rotate .2s infinite linear;
+  -webkit-animation: coin-rotate .2s infinite linear;
+  -moz-animation: coin-rotate .2s infinite linear;
+  -ms-animation: coin-rotate .2s infinite linear;
+  -o-animation: coin-rotate .2s infinite linear;
+}
+
+@keyframes coin-rotate {
+  0% {transform: rotateY(0deg);}
+  100% {transform: rotateY(360deg);}
+}
+@-webkit-keyframes coin-rotate {
+  0% {-webkit-transform: rotateY(0deg);}
+  100% {-webkit-transform: rotateY(360deg);}
+}
+@-moz-keyframes coin-rotate {
+  0% {-moz-transform: rotateY(0deg);}
+  100% {-moz-transform: rotateY(360deg);}
+}
+@-ms-keyframes coin-rotate {
+  0% {-ms-transform: rotateY(0deg);}
+  100% {-ms-transform: rotateY(360deg);}
+}
+@-o-keyframes coin-rotate {
+  0% {-o-transform: rotateY(0deg);}
+  100% {-o-transform: rotateY(360deg);}
+}
+
 
 
 

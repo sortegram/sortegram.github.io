@@ -32,6 +32,9 @@
 <link rel='stylesheet' href='css/sweetalert.css' />
 <link rel='stylesheet' href='css/sortegram.css' />
 
+<link rel="stylesheet alternate" href="css/sg-light.css" id="light-styles" />
+<link rel="stylesheet" href="css/sg-dark.css"  id="dark-styles" />
+
 <script src='js/jquery.min.js'></script>
 <script src='js/jquery-ui.min.js'></script>
 <script src='js/sweetalert.min.js'></script>
@@ -87,6 +90,9 @@ Sortegram
       <div class='ui-color lilas'></div>
       <div class='ui-color ciano'></div>
       <div class='ui-color violeta'></div>
+      <br><br>
+      <input id='is-light' type='checkbox' checked />
+      <label for='is-light'></label>
     </div>
   </div>
 </div>
@@ -94,6 +100,8 @@ Sortegram
 <div id='home' class='open lock-scroll'>
   <div id='sg-raffle' onclick='sgRaffle()'></div>
   <div id='c-raffle' onclick='cRaffle()'></div>
+  <div id='cc-raffle' onclick='ccRaffle()'></div>
+  <div id='b-raffle' onclick='bRaffle()' class='no-display'></div>
 </div>
 
 <div id='sg-manage' class='close lock-scroll'>
@@ -109,7 +117,6 @@ Sortegram
 <div id='cover'></div>
 
 <div id='classic' class='close lock-scroll'>
-
 <div class='min-max'>
 <div class='resizing-input'>
   Sortear <input id='n' class='input-min-max' type='number' placeholder='n' value='1' min='1' /> número<span id='numb-plural'></span> <br><br>
@@ -145,6 +152,7 @@ Sortegram
 </div><!-- #sortegram -->
 
 <div id='start-sortegram' class='close lock-scroll'>
+  <button id='sg-refresh' onclick="sgRaffleRefresh()"></button>
   <button onclick='sgStart()' id='sg-go' class='sort-btn'>Sortear</button>
   <div id='sg-result' class='no-display'>Resultado</div>
   <dl id='user-names-2'></dl>
@@ -152,9 +160,29 @@ Sortegram
   <div id='NoPdiv'>
   <span id='number-of-participants-2'></span> participante<span id='part-plural-2'></span>
   </div>
-  <button onclick='sgNew()' class='new-btn no-display'>Novo sorteio Sortegram</button>
-  <button onclick='home()' class='back-to-home-btn no-display'>Voltar para o início</button>
+  <button onclick='sgNew()' class='new-btn no-display'>Novo Sorteio</button>
+  <button onclick='home()' class='back-to-home-btn no-display'>Início</button>
 </div><!-- #sortegram -->
+
+
+
+<div id='h-o-t' class='close lock-scroll'>
+
+<div class="flip-container" onmousedown='ccStart()'>
+	<div class="flipper">
+		<div class="cara"></div>
+		<div class="coroa"></div>
+	</div>
+</div>
+<p>Toque na moeda para girá-la.</p>
+</div><!-- #h-o-t -->
+
+
+
+<div id='bingo' class='close lock-scroll'>
+
+<button onclick='bStart()' id='b-go' class='sort-btn'>Sortear</button>
+</div><!-- #h-o-t -->
 
 </div><!-- #content -->
 

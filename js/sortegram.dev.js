@@ -19,15 +19,26 @@ var d = document,
     hide = 'none',
 
     // Colors vars [background, button, font]
-    green = ['#116D01','#00B70B','#66FF73'],
-    blue = ['#1763D0','#79A9EF','#C6DDFF'],
-    red = ['#BB2E2E','#E68383','#FFDCDC'],
-    yellow = ['#7B6803','#DED516','#FFFCCF'],
-    orange = ['#C7781B','#BD2F2F','#FFFFFF'],
-    pink = ['#C35AC1','#FF8FF8','#FFD5FD'],
-    lilac = ['#9B4AD0','#C79BEA','#FFFFFF'],
-    cyan = ['#009BA9','#75CDEC','#8DFFF5'],
-    violet = ['#96197C','#D84EFD','#F8CDFF'],
+    green = ['#116D01','#00B70B','#FFF'],
+    blue = ['#1763D0','#79A9EF','#FFF'],
+    red = ['#BB2E2E','#E68383','#FFF'],
+    yellow = ['#7B6803','#DED516','#FFF'],
+    orange = ['#C7781B','#BD2F2F','#FFF'],
+    pink = ['#C35AC1','#FF8FF8','#FFF'],
+    lilac = ['#9B4AD0','#C79BEA','#FFF'],
+    cyan = ['#009BA9','#75CDEC','#FFF'],
+    violet = ['#96197C','#D84EFD','#FFF'],
+
+    // Colors vars [background, button, font, border]
+    greenLight = ['#ABDCA2','#08DA1F','#003A05'],///
+    blueLight = ['#B1CBF1','#8DE2E1','#0448AD'],///
+    redLight = ['#FBC6C6','#DA0808','#000'],
+    yellowLight = ['#FBFBC6','#DAD108','#000'],
+    orangeLight = ['#FBE5C6','#DA8408','#000'],
+    pinkLight = ['#FEDEFF','#FF89F7','#000'],
+    lilacLight = ['#ECDEFF','#DB89FF','#000'],
+    cyanLight = ['#DEFFFA','#57B9CE','#000'],
+    violetLight = ['#FC97FF','#BA57CE','#000'],
 
     // Number input vars
     n = document.getElementById( 'n' ),
@@ -36,8 +47,8 @@ var d = document,
 
     // DOM vars
     $bg_uiColor = $( '#cover, #sidebar, .splat-loader' ),
-    $btn_uiColor = $( '.new-btn, .sort-btn, #c-result, #sg-done' ),
-    $fnt_uiColor = $( '#input-username-lbl' ),
+    $btn_uiColor = $( '#sg-raffle, #c-raffle, #cc-raffle, #b-raffle, .new-btn, .sort-btn, #c-result, #sg-done, #sg-refresh' ),
+    $fnt_uiColor = $( 'body' ),
 
     cResult = document.getElementById( 'c-result' ),
     sgResult = document.getElementById( 'sg-result' ),
@@ -54,6 +65,7 @@ var d = document,
     $deleteUser = $( '.delete-user' ),
     deleteBtn = document.getElementById( 'delete-all' ),
     isNew = document.getElementById( 'is-new' ),
+    isLight = document.getElementById( 'is-light' ),
     nbOpsBtn = document.getElementById( 'navbar-ops-btn' ),
     nbOpsBtnClose = document.getElementById( 'navbar-ops-btn-close' ),
     cCurrent = document.getElementById( 'c-current' ),
@@ -62,6 +74,7 @@ var d = document,
     // LocalStorage vars (all of them starts with underscore)
     _uiColor = localStorage.getItem( 'ui-color' ),
     _isNew = localStorage.getItem( 'is-new' ),
+    _isLight = localStorage.getItem( 'is-light' ),
     _savedNamesEdit = localStorage.getItem( 'saved-names-edit' );
 
 
@@ -80,6 +93,7 @@ setInterval(function() {
 
 if ( !localStorage['is-new'] ) {
   localStorage.setItem( 'is-new','true' );
+  localStorage.setItem( 'is-light','false' );
   localStorage.setItem( 'saved-names-edit','' );
   sgManage.style.display = hide;
   document.location.reload();
@@ -97,48 +111,114 @@ if ( _isNew === 'false' ) {
 
 // Funções a serem carregadas na inicialização
 function appLoad () {
+  if ( _isLight === 'false' ) {
         if ( !_uiColor ) {
+          localStorage.setItem( 'ui-color','' );
+          $bg_uiColor.css( 'background-color',green[0] );
+          $btn_uiColor.css( 'background-color','' );
+          $fnt_uiColor.css( 'color','' );
+          $( '.verde' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'green' ) {
+              $bg_uiColor.css( 'background-color',green[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.verde' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'blue' ) {
+              $bg_uiColor.css( 'background-color',blue[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.azul' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'red' ) {
+              $bg_uiColor.css( 'background-color',red[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.vermelho' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'yellow' ) {
+              $bg_uiColor.css( 'background-color',yellow[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.amarelo' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'orange' ) {
+              $bg_uiColor.css( 'background-color',orange[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.laranja' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'pink' ) {
+              $bg_uiColor.css( 'background-color',pink[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.rosa' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'lilac' ) {
+              $bg_uiColor.css( 'background-color',lilac[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.lilas' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'cyan' ) {
+              $bg_uiColor.css( 'background-color',cyan[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.ciano' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'violet' ) {
+              $bg_uiColor.css( 'background-color',violet[0] );
+              $btn_uiColor.css( 'background-color','' );
+              $fnt_uiColor.css( 'color','' );
+              $( '.violeta' ).css( 'border','2px solid #000000' );
+        }
+    }
+    else {
+      if ( !_uiColor ) {
           localStorage.setItem( 'ui-color','' );
           $bg_uiColor.css( 'background-color',green[0] );
           $btn_uiColor.css( 'background-color',green[1] );
           $fnt_uiColor.css( 'color',green[2] );
+          $( '.verde' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'green' ) {
               $bg_uiColor.css( 'background-color',green[0] );
               $btn_uiColor.css( 'background-color',green[1] );
               $fnt_uiColor.css( 'color',green[2] );
+              $( '.verde' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'blue' ) {
               $bg_uiColor.css( 'background-color',blue[0] );
               $btn_uiColor.css( 'background-color',blue[1] );
               $fnt_uiColor.css( 'color',blue[2] );
+              $( '.azul' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'red' ) {
               $bg_uiColor.css( 'background-color',red[0] );
               $btn_uiColor.css( 'background-color',red[1] );
               $fnt_uiColor.css( 'color',red[2] );
+              $( '.vermelho' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'yellow' ) {
               $bg_uiColor.css( 'background-color',yellow[0] );
               $btn_uiColor.css( 'background-color',yellow[1] );
               $fnt_uiColor.css( 'color',yellow[2] );
+              $( '.amarelo' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'orange' ) {
               $bg_uiColor.css( 'background-color',orange[0] );
               $btn_uiColor.css( 'background-color',orange[1] );
               $fnt_uiColor.css( 'color',orange[2] );
+              $( '.laranja' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'pink' ) {
               $bg_uiColor.css( 'background-color',pink[0] );
               $btn_uiColor.css( 'background-color',pink[1] );
               $fnt_uiColor.css( 'color',pink[2] );
+              $( '.rosa' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'lilac' ) {
               $bg_uiColor.css( 'background-color',lilac[0] );
               $btn_uiColor.css( 'background-color',lilac[1] );
               $fnt_uiColor.css( 'color',lilac[2] );
+              $( '.lilas' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'cyan' ) {
               $bg_uiColor.css( 'background-color',cyan[0] );
               $btn_uiColor.css( 'background-color',cyan[1] );
               $fnt_uiColor.css( 'color',cyan[2] );
+              $( '.ciano' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'violet' ) {
               $bg_uiColor.css( 'background-color',violet[0] );
               $btn_uiColor.css( 'background-color',violet[1] );
               $fnt_uiColor.css( 'color',violet[2] );
+              $( '.violeta' ).css( 'border','2px solid #000000' );
         }
+    }
         $('#content').show();
 
       setTimeout(function () {
@@ -191,13 +271,16 @@ function home() {
   cResult.style.backgroundColor = 'rgba(236, 248, 255, 0.5)';
   cResult.style.borderTop = '3px solid #FFF';
   cResult.style.borderBottom = '3px solid #FFF';
-  $( '#home' ).removeClass( 'close' ).addClass( 'open' );
-  $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
-    $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#home' ).removeClass( 'close' ).addClass( 'open' );
+      $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
       $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
   document.getElementById( 'logo' ).innerHTML = 'Sortegram';
   $( '#trophy' ).hide();
+  $( '#sg-refresh' ).hide();
   sgQuit();
   cNew();
 }
@@ -211,15 +294,18 @@ function sgManageBtn () {
   cResult.style.backgroundColor = 'rgba(236, 248, 255, 0.5)';
   cResult.style.borderTop = '3px solid #FFF';
   cResult.style.borderBottom = '3px solid #FFF';
-  $( '#sg-manage' ).removeClass( 'close' ).addClass( 'open' );
-    $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-    $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#sg-manage' ).removeClass( 'close' ).addClass( 'open' );
+      $( '#home' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
       $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
   document.getElementById( 'logo' ).innerHTML = 'Sorteio salvo';
-  $('#user-names-manage .delete-user').hide();
+  $( '#user-names-manage .delete-user' ).hide();
   sgQuit();
   cNew();
+  Last();
 }
 
 
@@ -232,12 +318,17 @@ function Last () {
       $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#home' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
 
 if ( $( '#user-names' ).html() === _savedNamesEdit ) {
       $( '#user-names-manage' ).html(_savedNamesEdit);
 }
  else if ( $( '#user-names' ).html() === '' ) {
-      $( '#user-names-manage' ).html($( '#user-names' ).html());
+      $( '#user-names-manage' ).html(_savedNamesEdit);
+}
+ else if ( $( '#user-names-manage' ).html() === '' ) {
+      $( '#user-names-manage' ).html(_savedNamesEdit);
 }
  else {
       $( '#user-names-manage' ).html($( '#user-names' ).html());
@@ -256,6 +347,8 @@ function editLast () {
       $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
       $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#home' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
 
         document.getElementById( 'logo' ).innerHTML = 'Editar';
         document.getElementById( 'user-names' ).innerHTML = _savedNamesEdit;
@@ -296,6 +389,9 @@ function sgNew () {
 
       // Esconde o trofeu
     $( '#trophy' ).hide();
+
+    $( '#sg-refresh' ).hide();
+
     NoPdiv.style.display = show;
 
       userName.value = '';
@@ -307,6 +403,8 @@ function sgNew () {
         $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
         $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
         $( '#home' ).removeClass( 'open' ).addClass( 'close' );
+        $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+        $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
 
         document.getElementById( 'logo' ).innerHTML = 'Adicionar';
 
@@ -326,6 +424,8 @@ function sgNew () {
 
 function sgQuit () {
   $( '#trophy' ).hide();
+  $( '#sg-refresh' ).hide();
+
   sgGo.style.display = show;
   sgResult.style.display = hide;
   $( '.new-btn, .back-to-home-btn' ).hide();
@@ -528,7 +628,7 @@ function sbmt () { // Funcao que adiciona a lista o participante
 
   setTimeout(function () {
     inputUserNameLabel.innerHTML = 'Digite o nome do participante';
-    inputUserNameLabel.style.color = '#FFFFFF';
+    inputUserNameLabel.style.color = '';
     $( inputUserNameLabel ).removeClass( 'error-shake' );
   }, 5000);
   }
@@ -536,8 +636,8 @@ function sbmt () { // Funcao que adiciona a lista o participante
 
 $( d ).on('click','.delete-user',function () {
       $( this ).parent().remove();
-      $( '#user-names-2' ).html($( '#user-names' ).html());
-      $( '#user-names-manage' ).html($( '#user-names' ).html());
+      $( '#user-names-2' ).html( $( '#user-names' ).html() );
+      $( '#user-names-manage' ).html( $( '#user-names' ).html() );
 
         changeNumber();
 
@@ -672,6 +772,8 @@ $( '#user-names-2' ).animate({
 
           $( '.new-btn, .back-to-home-btn' ).show(); // Mostra o botao 'Novo Sorteio'
 
+          $( '#sg-refresh' ).show();
+
       // Aumenta ou diminui a fonte de acordo com o resultado
       if ( sgResult.innerHTML.length <= 10 ) {
           sgResult.style.fontSize = '30pt';
@@ -695,13 +797,77 @@ $( d ).contextmenu(function() {
 
 
 
+
+
+// Começa o Cara ou coroa
+function ccStart () {
+// Cria uma array com a quantidade de numeros dada de modo que não se repitam
+var sortearCC = Math.floor(Math.random() * ((1001 - 1) + 1) + 1);
+
+    document.getElementById( 'logo' ).innerHTML = 'Rodando';
+
+    $( '#logo' ).removeClass( 'logo-blink addfadeIn' ).addClass( 'logo-blink' );
+
+    $( '.flipper' ).addClass( 'rotate-coin' );
+
+    nbOpsBtn.disabled = true;
+
+
+setTimeout(function() { // Timeout de 4s
+            $( '.flipper' ).removeClass( 'rotate-coin' );
+              if (sortearCC <= 500) {
+                $('.cara').css({'transform': 'rotateY(0deg)'});
+                $('.coroa').css({'transform': 'rotateY(180deg)'});
+                var resultCC = 'Cara';
+              } else {
+                $('.coroa').css({'transform': 'rotateY(0deg)'});
+                $('.cara').css({'transform': 'rotateY(180deg)'});
+                var resultCC = 'Coroa';
+              }
+
+              document.getElementById( 'logo' ).innerHTML = resultCC;
+
+              nbOpsBtn.disabled = false;
+
+
+      // Remove o efeito de fadeIn e rotacao e adiciona fadeIn novamente
+      $( '#logo' ).removeClass( 'addfadeIn logo-blink' ).addClass( 'addfadeIn' );
+
+  }, 3000);
+};
+
+
+
 // Funcao para selecionar o SC
 function cRaffle () {
+    $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
+    $( '#classic' ).removeClass( 'close' ).addClass( 'open' );
+    $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
+    $( '#home' ).removeClass( 'open' ).addClass( 'close' );
+    $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+    $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
+
+      document.getElementById( 'logo' ).innerHTML = 'Clássico';
+}
+
+// Funcao para selecionar o CC
+function ccRaffle () {
+  $( '#h-o-t' ).removeClass( 'close' ).addClass( 'open' );
   $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
   $( '#sg-manage' ).addClass( 'close' ).removeClass( 'open' );
   $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-    $( '#classic' ).removeClass( 'close' ).addClass( 'open' );
-      document.getElementById( 'logo' ).innerHTML = 'Clássico';
+    $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
+      document.getElementById( 'logo' ).innerHTML = 'Cara ou Coroa';
+}
+
+// Funcao para selecionar o BINGO
+function bRaffle () {
+  $( '#bingo' ).removeClass( 'close' ).addClass( 'open' );
+  $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
+  $( '#sg-manage' ).addClass( 'close' ).removeClass( 'open' );
+  $( '#home' ).removeClass( 'open' ).addClass( 'close' );
+  $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+      document.getElementById( 'logo' ).innerHTML = 'Bingo';
 }
 
 
@@ -713,7 +879,7 @@ function sgRaffle () {
   else if ( isNew.checked === false ) { // Se EXISTE jogo salvo
     swal({
     title: "Já existe um sorteio salvo",
-    text: "Deseja editar o sorteio salvo ou criar um novo?",
+    text: "Deseja Editar o sorteio salvo ou criar um Novo?",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#00AD2B",
@@ -807,6 +973,7 @@ function sgSaveRaffle () {
 
 function sgRaffleReady () {
 sgResult.style.backgroundColor = 'transparent';
+$( '#sg-refresh' ).hide();
   if ( isNew.checked
     && $( '#user-names > dt' ).size() > 1
     ) {
@@ -816,6 +983,8 @@ sgResult.style.backgroundColor = 'transparent';
         $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
         $( '#home' ).removeClass( 'open' ).addClass( 'close' );
         $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
+        $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+        $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
 
         $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
 
@@ -833,6 +1002,8 @@ sgResult.style.backgroundColor = 'transparent';
           $( '#start-sortegram' ).removeClass( 'close' ).addClass( 'open' );
           $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
           $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
+          $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+          $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
 
           $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
 
@@ -853,73 +1024,187 @@ sgResult.style.backgroundColor = 'transparent';
 }
 
 
-$( '.ui-color-picker .ui-color' ).on( 'click', function () {
+function sgRaffleRefresh () {
 
+  sgGo.style.display = show;
+  sgResult.style.display = hide;
+  $( '.new-btn, .back-to-home-btn' ).hide();
+  sgCurrent.innerHTML = '';
+  sgGo.removeAttribute( 'disabled' );
+
+      // Esconde o trofeu
+    $( '#trophy' ).hide();
+
+    $( '#sg-refresh' ).hide();
+
+    NoPdiv.style.display = show;
+
+        $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
+
+
+
+
+  sgResult.style.backgroundColor = 'transparent';
+
+        $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
+
+        document.getElementById( 'logo' ).innerHTML = 'Re-sorteio';
+
+        $('#user-names-2 .delete-user').hide();
+
+        $('#user-names-2 dt').css({
+          "background-color": "",
+          "color":"",
+          "border":""
+          });
+
+  $( '#sg-refresh' ).hide();
+
+  Reload();
+}
+
+
+
+
+$( '.ui-color-picker .ui-color' ).on( 'click', function () {
+    $( '.ui-color' ).css( 'border','' );
+    $( this ).css( 'border','2px solid #000000' );
+
+if ( !isLight.checked ) { // If is not dark
     if ( $( this ).hasClass( 'verde' ) ) {
+      $bg_uiColor.css( 'background-color', greenLight[0] );
+      $btn_uiColor.css( 'background-color', greenLight[1] );
+      $fnt_uiColor.css( 'color', greenLight[2] );
+      localStorage.setItem( 'ui-color','green' );
+    }
+     else if ( $( this ).hasClass( 'azul' ) ) {
+      $bg_uiColor.css( 'background-color', blueLight[0] );
+      $btn_uiColor.css( 'background-color', blueLight[1] );
+      $fnt_uiColor.css( 'color', blueLight[2] );
+      localStorage.setItem( 'ui-color','blue' );
+    }
+     else if ( $( this ).hasClass( 'vermelho' ) ) {
+      $bg_uiColor.css( 'background-color', redLight[0] );
+      $btn_uiColor.css( 'background-color', redLight[1] );
+      $fnt_uiColor.css( 'color', redLight[2] );
+      localStorage.setItem( 'ui-color','red' );
+    }
+     else if ( $( this ).hasClass( 'amarelo' ) ) {
+      $bg_uiColor.css( 'background-color', yellowLight[0] );
+      $btn_uiColor.css( 'background-color', yellowLight[1] );
+      $fnt_uiColor.css( 'color', yellowLight[2] );
+      localStorage.setItem( 'ui-color','yellow' );
+    }
+     else if ( $( this ).hasClass( 'laranja' ) ) {
+      $bg_uiColor.css( 'background-color', orangeLight[0] );
+      $btn_uiColor.css( 'background-color', orangeLight[1] );
+      $fnt_uiColor.css( 'color', orangeLight[2] );
+      localStorage.setItem( 'ui-color','orange' );
+    }
+     else if ( $( this ).hasClass( 'rosa' ) ) {
+      $bg_uiColor.css( 'background-color', pinkLight[0] );
+      $btn_uiColor.css( 'background-color', pinkLight[1] );
+      $fnt_uiColor.css( 'color', pinkLight[2] );
+      localStorage.setItem( 'ui-color','pink' );
+    }
+     else if ( $( this ).hasClass( 'lilas' ) ) {
+      $bg_uiColor.css( 'background-color', lilacLight[0] );
+      $btn_uiColor.css( 'background-color', lilacLight[1] );
+      $fnt_uiColor.css( 'color', lilacLight[2] );
+      localStorage.setItem( 'ui-color','lilac' );
+    }
+     else if ( $( this ).hasClass( 'ciano' ) ) {
+      $bg_uiColor.css( 'background-color', cyanLight[0] );
+      $btn_uiColor.css( 'background-color', cyanLight[1] );
+      $fnt_uiColor.css( 'color', cyanLight[2] );
+      localStorage.setItem( 'ui-color','cyan' );
+    }
+     else if ( $( this ).hasClass( 'violeta' ) ) {
+      $bg_uiColor.css( 'background-color', violetLight[0] );
+      $btn_uiColor.css( 'background-color', violetLight[1] );
+      $fnt_uiColor.css( 'color', violetLight[2] );
+      localStorage.setItem( 'ui-color','violet' );
+    }
+  }
+    else { // If is dark
+      if ( $( this ).hasClass( 'verde' ) ) {
       $bg_uiColor.css( 'background-color', green[0] );
-      $btn_uiColor.css( 'background-color', green[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', green[2] );
       localStorage.setItem( 'ui-color','green' );
     }
      else if ( $( this ).hasClass( 'azul' ) ) {
       $bg_uiColor.css( 'background-color', blue[0] );
-      $btn_uiColor.css( 'background-color', blue[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', blue[2] );
       localStorage.setItem( 'ui-color','blue' );
     }
      else if ( $( this ).hasClass( 'vermelho' ) ) {
       $bg_uiColor.css( 'background-color', red[0] );
-      $btn_uiColor.css( 'background-color', red[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', red[2] );
       localStorage.setItem( 'ui-color','red' );
     }
      else if ( $( this ).hasClass( 'amarelo' ) ) {
       $bg_uiColor.css( 'background-color', yellow[0] );
-      $btn_uiColor.css( 'background-color', yellow[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', yellow[2] );
       localStorage.setItem( 'ui-color','yellow' );
     }
      else if ( $( this ).hasClass( 'laranja' ) ) {
       $bg_uiColor.css( 'background-color', orange[0] );
-      $btn_uiColor.css( 'background-color', orange[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', orange[2] );
       localStorage.setItem( 'ui-color','orange' );
     }
      else if ( $( this ).hasClass( 'rosa' ) ) {
       $bg_uiColor.css( 'background-color', pink[0] );
-      $btn_uiColor.css( 'background-color', pink[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', pink[2] );
       localStorage.setItem( 'ui-color','pink' );
     }
      else if ( $( this ).hasClass( 'lilas' ) ) {
       $bg_uiColor.css( 'background-color', lilac[0] );
-      $btn_uiColor.css( 'background-color', lilac[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', lilac[2] );
       localStorage.setItem( 'ui-color','lilac' );
     }
      else if ( $( this ).hasClass( 'ciano' ) ) {
       $bg_uiColor.css( 'background-color', cyan[0] );
-      $btn_uiColor.css( 'background-color', cyan[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', cyan[2] );
       localStorage.setItem( 'ui-color','cyan' );
     }
      else if ( $( this ).hasClass( 'violeta' ) ) {
       $bg_uiColor.css( 'background-color', violet[0] );
-      $btn_uiColor.css( 'background-color', violet[1] );
+      $btn_uiColor.css( 'background-color', '' );
       $fnt_uiColor.css( 'color', violet[2] );
       localStorage.setItem( 'ui-color','violet' );
+    }
     }
 
 
     swal({
-        title: 'Aguarde...',
+        title: 'Pronto!',
         text: 'Salvando alterações...',
         type: 'success',
         showConfirmButton: false,
-        timer: 3000,
-        allowOutsideClick: true
+        timer: 3000
       });
 });
+
+
+function lightMode () {
+  document.getElementById('light-styles').disabled  = false;
+  document.getElementById('dark-styles').disabled = true;
+  localStorage.setItem('is-light','true');
+}
+
+function darkMode () {
+  document.getElementById('dark-styles').disabled  = false;
+  document.getElementById('light-styles').disabled = true;
+  localStorage.setItem('is-light','false');
+}
 
 
 x.oninput = function () {
@@ -999,6 +1284,7 @@ userName.oninput = function () {
         this.value = this.value.slice( 0,30 );
         }
 }
+
 
 
 // Reload script
