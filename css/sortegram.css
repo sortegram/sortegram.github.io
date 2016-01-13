@@ -46,7 +46,9 @@ a {
               url(../img/cc.png),
               url(../img/appbar.transform.rotate.counterclockwise.png),
               url(../img/ic_arrow_forward_white_24dp_2x.png),
-              url(../img/ic_done_white_24dp_1x.png);
+              url(../img/ic_done_white_24dp_1x.png),
+              url(../img/appbar.transform.rotate.left.png),
+              url(../img/appbar.transform.rotate.right.png);
 }
 
 input, button {
