@@ -15,6 +15,11 @@ body, html {
   -o-touch-action: none;
 }
 
+a {
+  color: #01C323;
+  text-decoration: none;
+}
+
 #content {
   width: 100%;
   height: 100%;
@@ -207,7 +212,7 @@ input[type="checkbox"]:focus + label:before {
   width: 150px;
   height: 150px;
   position: absolute;
-    top: 193px;
+    top: 155px;
     left: 50%;
   transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
@@ -230,8 +235,8 @@ input[type="checkbox"]:focus + label:before {
 #c-raffle {
   background-color: rgba(255, 255, 255, 0.3);
   background-image: url(../img/appbar.sort.numeric.png);
-  background-size: 80%;
-  background-position: 50% 1%;
+  background-size: 60%;
+  background-position: 50% 40%;
   background-repeat: no-repeat;
   border: 2px solid #fff;
   border-radius: 50% 50% 25% 25%;
@@ -239,10 +244,10 @@ input[type="checkbox"]:focus + label:before {
   -moz-border-radius: 50% 50% 25% 25%;
   -ms-border-radius: 50% 50% 25% 25%;
   -o-border-radius: 50% 50% 25% 25%;
-  width: 150px;
-  height: 150px;
+  width: 115px;
+  height: 115px;
   position: absolute;
-    top: 364px;
+    top: 365px;
     left: 50%;
   transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
@@ -265,20 +270,20 @@ input[type="checkbox"]:focus + label:before {
 #cc-raffle {
   background-color: rgba(255, 255, 255, 0.3);
   background-image: url(../img/cc.png);
-  background-size: 65%;
+  background-size: 70%;
   background-position: 50%;
   background-repeat: no-repeat;
   border: 2px solid #fff;
-  border-radius: 25% 50% 50% 25%;
-  -webkit-border-radius: 25% 50% 50% 25%;
-  -moz-border-radius: 25% 50% 50% 25%;
-  -ms-border-radius: 25% 50% 50% 25%;
-  -o-border-radius: 25% 50% 50% 25%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   width: 90px;
   height: 90px;
   position: absolute;
-    top: 279px;
-    left: 70px;
+    top: 270px;
+    left: 50%;
   transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   -moz-transform: translate(-50%,-50%);
@@ -287,6 +292,22 @@ input[type="checkbox"]:focus + label:before {
 }
 #cc-raffle:active, #classic-raffle:hover {
   background-color: rgba(0,0,0,0.4);
+}
+#cc-raffle::after {
+  content: "Coroa";
+  color: currentColor;
+  position: absolute;
+  bottom: 40px;
+  left: 75px;
+  width: 100%;
+}
+#cc-raffle::before {
+  content: "Cara";
+  color: currentColor;
+  position: absolute;
+  bottom: 40px;
+  left: -75px;
+  width: 100%;
 }
 
 #b-raffle {
@@ -402,7 +423,7 @@ input[type="checkbox"]:focus + label:before {
 }
 
 #navbar-ops-btn {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.1);
   background-image: url('../img/appbar.lines.horizontal.4-2.png');
   background-size: 100% auto;
   background-position: 50%;
@@ -497,7 +518,6 @@ input[type="checkbox"]:focus + label:before {
   -ms-transition: .2s ease;
   -o-transition: .2s ease;
   padding: 15px;
-  background-color: rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.32);
   cursor: pointer;
 }
@@ -537,16 +557,7 @@ background-color: #00EAFF;
 background-color: #FF00CB;
 }
 
-.splat {
-  width: 100%;
-  max-width: 100%;
-  text-align: center;
-  position: fixed;
-    top: 0;
-    left: 0;
-  margin-top: 50px;
-  padding-bottom: 125px;
-}
+
 
 .resizing-input {
   display: inline;
@@ -656,7 +667,7 @@ background-color: #FF00CB;
   z-index: -1;
 }
 
-#bingo {
+#sg-about {
   color: currentColor;
   background-color: transparent;
   width: 100%;
@@ -667,7 +678,7 @@ background-color: #FF00CB;
   position: fixed;
   top: 0;
   padding: 1px;
-  padding-top: 80px;
+  padding-top: 60px;
   padding-bottom: 30px;
   box-shadow: 0px 0px 20px #000;
   -webkit-box-shadow: 0px 0px 20px #000;
@@ -683,6 +694,15 @@ background-color: #FF00CB;
   z-index: -1;
 }
 
+#sg-about-text {
+    background-color: rgba(0,0,0,0.1);
+    text-align: justify;
+    padding: 10px;
+    height: 340px;
+    max-height: 340px;
+    overflow-y: auto;
+}
+
 
 .min-max {
   text-align: center;
@@ -693,8 +713,8 @@ background-color: #FF00CB;
 }
 
 .input-min-max {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: currentColor;
+    background-color: #FFF;
+    color: #000;
     font-size: 20px;
     max-width: 100px;
     mwidth: 30%;
@@ -889,6 +909,10 @@ background-color: #FF00CB;
   -o-transition: 1s ease;
 }
 
+#sg-current {
+  height: 20px;
+}
+
 .result-rotate {
   animation: result-rotate 1.5s;
   -webkit-animation: result-rotate 1.5s;
@@ -923,11 +947,11 @@ background-color: #FF00CB;
     width: 60%;
     max-width: 60%;
     height: 45px;
-    color: #000;
+    color: #FFF;
     font-size: 14pt;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
     border: 0;
-    border-bottom: 4px solid #fff;
+    border-bottom: 4px solid #FFF;
 }
 
 #input-username-lbl {
@@ -999,6 +1023,7 @@ background-color: #FF00CB;
 }
 
 #user-names {
+  background-color: rgba(95, 95, 95, 0.5);
   counter-reset: user-luck-number;
   margin-bottom: 0;
   line-height: 1;
@@ -1014,8 +1039,8 @@ background-color: #FF00CB;
 }
 
 #user-names dt {
-  background-color: rgba(0, 0, 0, 0.2);
-  color: currentColor;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #fff;
   text-align: left;
   border-bottom: 1px solid #D4D4D4;
   padding-top: 15px;
@@ -1031,6 +1056,10 @@ background-color: #FF00CB;
 
 .dt-text {
     width: calc(100% - 110px);
+    width: -webkit-calc(100% - 110px);
+    width: -moz-calc(100% - 110px);
+    width: -ms-calc(100% - 110px);
+    width: -o-calc(100% - 110px);
     height: 15px;
     padding: 15px;
     padding-left: 0;
@@ -1045,7 +1074,7 @@ background-color: #FF00CB;
 #user-names dt:before {
 	content: counter(user-luck-number);
 	counter-increment: user-luck-number;
-  color: #B5B5B5;
+  color: #DADADA;
   padding-right: 50px;
   padding-top: 4px;
   float: left;
@@ -1069,7 +1098,7 @@ background-color: #FF00CB;
 }
 
 #user-names-2 dt {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.15);
   color: currentColor;
   text-align: left;
   border-bottom: 1px solid #D4D4D4;
@@ -1086,7 +1115,7 @@ background-color: #FF00CB;
 #user-names-2 dt:before {
     content: counter(user-luck-number);
     counter-increment: user-luck-number;
-    color: #B5B5B5;
+    color: #DADADA;
     padding-right: 50px;
     padding-top: 4px;
     float: left;
@@ -1196,7 +1225,7 @@ background-color: #FF00CB;
 }
 
 .delete-user {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255,0,0,0.5);
     background-image: url(../img/appbar.delete.png);
     background-size: 130%;
     background-position: 50%;
@@ -1348,6 +1377,7 @@ background-color: #FF00CB;
     display: none;
     width: 70px;
     height: 70px;
+    background-color: rgba(0, 0, 0, 0.2);
     background-image: url(../img/appbar.trophy.png);
     background-size: auto 125%;
     background-repeat: no-repeat;
@@ -1424,7 +1454,6 @@ background-color: #FF00CB;
 }
 
 .flipper {
-  margin-left: 30%;
   width: 100%;
 	transition: 0.6s;
 	transform-style: preserve-3d;
@@ -1497,7 +1526,7 @@ background-color: #FF00CB;
 
 
 
-.splat-loader {
+.splash-loader {
     width: 100%;
     height: 100%;
     background-color: #148000;
@@ -1512,7 +1541,7 @@ background-color: #FF00CB;
     z-index: 100;
 }
 
-.splat-loader-spinner {
+.splash-loader-spinner {
     width: 100px;
     height: 100px;
     border: 3px solid #FFF;
@@ -1556,6 +1585,64 @@ background-color: #FF00CB;
 @-o-keyframes loader-spinner {
     100% {-o-transform: rotate(360deg)}
 }
+
+
+
+.splash-orientation {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.splash-orientation-img-right {
+    background-image: url(../img/appbar.transform.rotate.left.png);
+    background-size: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: calc(50% - 50px);
+    top: -webkit-calc(50% - 50px);
+    top: -moz-calc(50% - 50px);
+    top: -ms-calc(50% - 50px);
+    top: -o-calc(50% - 50px);
+    left: calc(50% - 50px);
+    left: -webkit-calc(50% - 50px);
+    left: -moz-calc(50% - 50px);
+    left: -ms-calc(50% - 50px);
+    left: -o-calc(50% - 50px);
+}
+
+.splash-orientation-img-left {
+    background-image: url(../img/appbar.transform.rotate.right.png);
+    background-size: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: calc(50% - 50px);
+    top: -webkit-calc(50% - 50px);
+    top: -moz-calc(50% - 50px);
+    top: -ms-calc(50% - 50px);
+    top: -o-calc(50% - 50px);
+    left: calc(50% - 50px);
+    left: -webkit-calc(50% - 50px);
+    left: -moz-calc(50% - 50px);
+    left: -ms-calc(50% - 50px);
+    left: -o-calc(50% - 50px);
+}
+
 
 
 

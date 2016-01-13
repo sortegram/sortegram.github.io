@@ -19,26 +19,26 @@ var d = document,
     hide = 'none',
 
     // Colors vars [background, button, font]
-    green = ['#116D01','#00B70B','#FFF'],
-    blue = ['#1763D0','#79A9EF','#FFF'],
-    red = ['#BB2E2E','#E68383','#FFF'],
-    yellow = ['#7B6803','#DED516','#FFF'],
-    orange = ['#C7781B','#BD2F2F','#FFF'],
-    pink = ['#C35AC1','#FF8FF8','#FFF'],
-    lilac = ['#9B4AD0','#C79BEA','#FFF'],
-    cyan = ['#009BA9','#75CDEC','#FFF'],
-    violet = ['#96197C','#D84EFD','#FFF'],
+    green = ['#116D01','#00B70B','#FFF','#FFF'],
+    blue = ['#1763D0','#79A9EF','#FFF','#FFF'],
+    red = ['#BB2E2E','#E68383','#FFF','#FFF'],
+    yellow = ['#7B6803','#DED516','#FFF','#FFF'],
+    orange = ['#C7781B','#BD2F2F','#FFF','#FFF'],
+    pink = ['#C35AC1','#FF8FF8','#FFF','#FFF'],
+    lilac = ['#9B4AD0','#C79BEA','#FFF','#FFF'],
+    cyan = ['#009BA9','#75CDEC','#FFF','#FFF'],
+    violet = ['#96197C','#D84EFD','#FFF','#FFF'],
 
-    // Colors vars [background, button, font, border]
-    greenLight = ['#ABDCA2','#08DA1F','#003A05'],///
-    blueLight = ['#B1CBF1','#8DE2E1','#0448AD'],///
-    redLight = ['#FBC6C6','#DA0808','#000'],
-    yellowLight = ['#FBFBC6','#DAD108','#000'],
-    orangeLight = ['#FBE5C6','#DA8408','#000'],
-    pinkLight = ['#FEDEFF','#FF89F7','#000'],
-    lilacLight = ['#ECDEFF','#DB89FF','#000'],
-    cyanLight = ['#DEFFFA','#57B9CE','#000'],
-    violetLight = ['#FC97FF','#BA57CE','#000'],
+    // Colors vars [background, button, font, font body]
+    greenLight = ['#ABDCA2','#7DD887','#043A08', '#043A08'],///
+    blueLight = ['#B1CBF1','#8DE2E1','#0448AD','#040A3A'],///
+    redLight = ['#FBC6C6','#DA0808','#8A1D1D','#8A1D1D'],
+    yellowLight = ['#EAEA6D','#DAD108','#585308','#585308'],
+    orangeLight = ['#FBE5C6','#DA8408','#581B08','#581B08'],
+    pinkLight = ['#FEDEFF','#FF89F7','#690465','#690465'],
+    lilacLight = ['#ECDEFF','#DB89FF','#5A0469','#5A0469'],
+    cyanLight = ['#96FFEF','#57B9CE','#045169','#045169'],
+    violetLight = ['#FC97FF','#BA57CE','#690465','#690465'],
 
     // Number input vars
     n = document.getElementById( 'n' ),
@@ -46,9 +46,10 @@ var d = document,
     y = document.getElementById( 'y' ),
 
     // DOM vars
-    $bg_uiColor = $( '#cover, #sidebar, .splat-loader' ),
-    $btn_uiColor = $( '#sg-raffle, #c-raffle, #cc-raffle, #b-raffle, .new-btn, .sort-btn, #c-result, #sg-done, #sg-refresh' ),
+    $bg_uiColor = $( '#cover, #sidebar, .splash-loader' ),
+    $btn_uiColor = $( '#sg-raffle, #c-raffle, #cc-raffle, #b-raffle, .new-btn, .new-btn-manage, .sort-btn, #c-result, #sg-done, #sg-refresh' ),
     $fnt_uiColor = $( 'body' ),
+    $bd_fntColor = $( '#logo, #input-username-lbl, .sidebar-op, #sg-current, #sg-current-2, p, #number-of-participants, .new-btn, .new-btn-manage, .sort-btn' ),
 
     cResult = document.getElementById( 'c-result' ),
     sgResult = document.getElementById( 'sg-result' ),
@@ -90,6 +91,22 @@ setInterval(function() {
 
 
 
+if ( _isLight === 'true' ) {
+  isLight.checked = false
+} else {
+  isLight.checked = true
+}
+
+setInterval(function() {
+  if ( isLight.checked === true ) {
+  localStorage.setItem( 'is-light','false' )
+} else {
+  localStorage.setItem( 'is-light','true' )
+}
+}, 100);
+
+
+
 
 if ( !localStorage['is-new'] ) {
   localStorage.setItem( 'is-new','true' );
@@ -111,118 +128,138 @@ if ( _isNew === 'false' ) {
 
 // Funções a serem carregadas na inicialização
 function appLoad () {
-  if ( _isLight === 'false' ) {
+  if ( _isLight === 'false' ) { // If is Dark
         if ( !_uiColor ) {
-          localStorage.setItem( 'ui-color','' );
-          $bg_uiColor.css( 'background-color',green[0] );
-          $btn_uiColor.css( 'background-color','' );
-          $fnt_uiColor.css( 'color','' );
-          $( '.verde' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'green' ) {
-              $bg_uiColor.css( 'background-color',green[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.verde' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'blue' ) {
-              $bg_uiColor.css( 'background-color',blue[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.azul' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'red' ) {
-              $bg_uiColor.css( 'background-color',red[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.vermelho' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'yellow' ) {
-              $bg_uiColor.css( 'background-color',yellow[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.amarelo' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'orange' ) {
-              $bg_uiColor.css( 'background-color',orange[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.laranja' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'pink' ) {
-              $bg_uiColor.css( 'background-color',pink[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.rosa' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'lilac' ) {
-              $bg_uiColor.css( 'background-color',lilac[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.lilas' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'cyan' ) {
-              $bg_uiColor.css( 'background-color',cyan[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.ciano' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'violet' ) {
-              $bg_uiColor.css( 'background-color',violet[0] );
-              $btn_uiColor.css( 'background-color','' );
-              $fnt_uiColor.css( 'color','' );
-              $( '.violeta' ).css( 'border','2px solid #000000' );
-        }
-    }
-    else {
-      if ( !_uiColor ) {
           localStorage.setItem( 'ui-color','' );
           $bg_uiColor.css( 'background-color',green[0] );
           $btn_uiColor.css( 'background-color',green[1] );
           $fnt_uiColor.css( 'color',green[2] );
+          $bd_fntColor.css( 'color',green[3] );
           $( '.verde' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'green' ) {
               $bg_uiColor.css( 'background-color',green[0] );
               $btn_uiColor.css( 'background-color',green[1] );
               $fnt_uiColor.css( 'color',green[2] );
+              $bd_fntColor.css( 'color',green[3] );
               $( '.verde' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'blue' ) {
               $bg_uiColor.css( 'background-color',blue[0] );
               $btn_uiColor.css( 'background-color',blue[1] );
               $fnt_uiColor.css( 'color',blue[2] );
+              $bd_fntColor.css( 'color',blue[3] );
               $( '.azul' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'red' ) {
               $bg_uiColor.css( 'background-color',red[0] );
               $btn_uiColor.css( 'background-color',red[1] );
               $fnt_uiColor.css( 'color',red[2] );
+              $bd_fntColor.css( 'color',red[3] );
               $( '.vermelho' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'yellow' ) {
               $bg_uiColor.css( 'background-color',yellow[0] );
               $btn_uiColor.css( 'background-color',yellow[1] );
               $fnt_uiColor.css( 'color',yellow[2] );
+              $bd_fntColor.css( 'color',yellow[3] );
               $( '.amarelo' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'orange' ) {
               $bg_uiColor.css( 'background-color',orange[0] );
               $btn_uiColor.css( 'background-color',orange[1] );
               $fnt_uiColor.css( 'color',orange[2] );
+              $bd_fntColor.css( 'color',orange[3] );
               $( '.laranja' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'pink' ) {
               $bg_uiColor.css( 'background-color',pink[0] );
               $btn_uiColor.css( 'background-color',pink[1] );
               $fnt_uiColor.css( 'color',pink[2] );
+              $bd_fntColor.css( 'color',pink[3] );
               $( '.rosa' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'lilac' ) {
               $bg_uiColor.css( 'background-color',lilac[0] );
               $btn_uiColor.css( 'background-color',lilac[1] );
               $fnt_uiColor.css( 'color',lilac[2] );
+              $bd_fntColor.css( 'color',lilac[3] );
               $( '.lilas' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'cyan' ) {
               $bg_uiColor.css( 'background-color',cyan[0] );
               $btn_uiColor.css( 'background-color',cyan[1] );
               $fnt_uiColor.css( 'color',cyan[2] );
+              $bd_fntColor.css( 'color',cyan[3] );
               $( '.ciano' ).css( 'border','2px solid #000000' );
         } else if ( _uiColor === 'violet' ) {
               $bg_uiColor.css( 'background-color',violet[0] );
               $btn_uiColor.css( 'background-color',violet[1] );
               $fnt_uiColor.css( 'color',violet[2] );
+              $bd_fntColor.css( 'color',violet[3] );
+              $( '.violeta' ).css( 'border','2px solid #000000' );
+        }
+    }
+    else { // If is Light
+      if ( !_uiColor ) {
+          localStorage.setItem( 'ui-color','' );
+          $bg_uiColor.css( 'background-color',greenLight[0] );
+          $btn_uiColor.css( 'background-color',greenLight[1] );
+          $fnt_uiColor.css( 'color',greenLight[2] );
+          $bd_fntColor.css( 'color',greenLight[3] );
+          $( '.verde' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'green' ) {
+              $bg_uiColor.css( 'background-color',greenLight[0] );
+              $btn_uiColor.css( 'background-color',greenLight[1] );
+              $fnt_uiColor.css( 'color',greenLight[2] );
+              $bd_fntColor.css( 'color',greenLight[3] );
+              $( '.verde' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'blue' ) {
+              $bg_uiColor.css( 'background-color',blueLight[0] );
+              $btn_uiColor.css( 'background-color',blueLight[1] );
+              $fnt_uiColor.css( 'color',blueLight[2] );
+              $bd_fntColor.css( 'color',blueLight[3] );
+              $( '.azul' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'red' ) {
+              $bg_uiColor.css( 'background-color',redLight[0] );
+              $btn_uiColor.css( 'background-color',redLight[1] );
+              $fnt_uiColor.css( 'color',redLight[2] );
+              $bd_fntColor.css( 'color',redLight[3] );
+              $( '.vermelho' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'yellow' ) {
+              $bg_uiColor.css( 'background-color',yellowLight[0] );
+              $btn_uiColor.css( 'background-color',yellowLight[1] );
+              $fnt_uiColor.css( 'color',yellowLight[2] );
+              $bd_fntColor.css( 'color',yellowLight[3] );
+              $( '.amarelo' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'orange' ) {
+              $bg_uiColor.css( 'background-color',orangeLight[0] );
+              $btn_uiColor.css( 'background-color',orangeLight[1] );
+              $fnt_uiColor.css( 'color',orangeLight[2] );
+              $bd_fntColor.css( 'color',orangeLight[3] );
+              $( '.laranja' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'pink' ) {
+              $bg_uiColor.css( 'background-color',pinkLight[0] );
+              $btn_uiColor.css( 'background-color',pinkLight[1] );
+              $fnt_uiColor.css( 'color',pinkLight[2] );
+              $bd_fntColor.css( 'color',pinkLight[3] );
+              $( '.rosa' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'lilac' ) {
+              $bg_uiColor.css( 'background-color',lilacLight[0] );
+              $btn_uiColor.css( 'background-color',lilacLight[1] );
+              $fnt_uiColor.css( 'color',lilacLight[2] );
+              $bd_fntColor.css( 'color',lilacLight[3] );
+              $( '.lilas' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'cyan' ) {
+              $bg_uiColor.css( 'background-color',cyanLight[0] );
+              $btn_uiColor.css( 'background-color',cyanLight[1] );
+              $fnt_uiColor.css( 'color',cyanLight[2] );
+              $bd_fntColor.css( 'color',cyanLight[3] );
+              $( '.ciano' ).css( 'border','2px solid #000000' );
+        } else if ( _uiColor === 'violet' ) {
+              $bg_uiColor.css( 'background-color',violetLight[0] );
+              $btn_uiColor.css( 'background-color',violetLight[1] );
+              $fnt_uiColor.css( 'color',violetLight[2] );
+              $bd_fntColor.css( 'color',violetLight[3] );
               $( '.violeta' ).css( 'border','2px solid #000000' );
         }
     }
         $('#content').show();
 
       setTimeout(function () {
-        $('.splat-loader').fadeOut('slow');
+        $('.splash-loader').fadeOut('slow');
       }, 2000);
 };
 //
@@ -272,12 +309,12 @@ function home() {
   cResult.style.borderTop = '3px solid #FFF';
   cResult.style.borderBottom = '3px solid #FFF';
       $( '#home' ).removeClass( 'close' ).addClass( 'open' );
+      $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
       $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
       $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
       $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
   document.getElementById( 'logo' ).innerHTML = 'Sortegram';
   $( '#trophy' ).hide();
   $( '#sg-refresh' ).hide();
@@ -295,12 +332,12 @@ function sgManageBtn () {
   cResult.style.borderTop = '3px solid #FFF';
   cResult.style.borderBottom = '3px solid #FFF';
       $( '#sg-manage' ).removeClass( 'close' ).addClass( 'open' );
+      $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
       $( '#home' ).removeClass( 'open' ).addClass( 'close' );
       $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
       $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
   document.getElementById( 'logo' ).innerHTML = 'Sorteio salvo';
   $( '#user-names-manage .delete-user' ).hide();
   sgQuit();
@@ -315,11 +352,11 @@ function sgManageBtn () {
 function Last () {
 
       $( '#sg-manage' ).removeClass( 'close' ).addClass( 'open' );
+      $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
       $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#home' ).removeClass( 'open' ).addClass( 'close' );
       $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
 
 if ( $( '#user-names' ).html() === _savedNamesEdit ) {
       $( '#user-names-manage' ).html(_savedNamesEdit);
@@ -348,7 +385,7 @@ function editLast () {
       $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
       $( '#home' ).removeClass( 'open' ).addClass( 'close' );
       $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
 
         document.getElementById( 'logo' ).innerHTML = 'Editar';
         document.getElementById( 'user-names' ).innerHTML = _savedNamesEdit;
@@ -404,7 +441,7 @@ function sgNew () {
         $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
         $( '#home' ).removeClass( 'open' ).addClass( 'close' );
         $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
+        $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
 
         document.getElementById( 'logo' ).innerHTML = 'Adicionar';
 
@@ -673,14 +710,21 @@ var sort = setInterval(function() {
       sgResult.innerHTML = Math.floor(Math.random() * ((Number(sgNoP.innerHTML) - 1) + 1) + 1);
 
 
-      if ( sgResult.innerHTML.length <= 10 ) {
+      // Aumenta ou diminui a fonte de acordo com o resultado
+      if ( sgResult.innerHTML.length <= 5 ) {
           sgResult.style.fontSize = '30pt';
       }
-      else if ( sgResult.innerHTML.length <= 19 ) {
+      else if ( sgResult.innerHTML.length <= 10 ) {
           sgResult.style.fontSize = '20pt';
       }
-      else if ( sgResult.innerHTML.length >= 20 ) {
-          sgResult.style.fontSize = '12pt';
+       else if ( sgResult.innerHTML.length <= 16 ) {
+          sgResult.style.fontSize = '18pt';
+      }
+       else if ( sgResult.innerHTML.length <= 18 ) {
+          sgResult.style.fontSize = '16pt';
+      }
+        else if ( sgResult.innerHTML.length >= 19 ) {
+      sgResult.style.fontSize = '12pt';
       }
 }, 60);
 
@@ -775,13 +819,19 @@ $( '#user-names-2' ).animate({
           $( '#sg-refresh' ).show();
 
       // Aumenta ou diminui a fonte de acordo com o resultado
-      if ( sgResult.innerHTML.length <= 10 ) {
+      if ( sgResult.innerHTML.length <= 5 ) {
           sgResult.style.fontSize = '30pt';
       }
-       else if ( sgResult.innerHTML.length <= 19 ) {
+      else if ( sgResult.innerHTML.length <= 10 ) {
           sgResult.style.fontSize = '20pt';
       }
-        else if ( sgResult.innerHTML.length >= 20 ) {
+       else if ( sgResult.innerHTML.length <= 16 ) {
+          sgResult.style.fontSize = '18pt';
+      }
+       else if ( sgResult.innerHTML.length <= 18 ) {
+          sgResult.style.fontSize = '16pt';
+      }
+        else if ( sgResult.innerHTML.length >= 19 ) {
       sgResult.style.fontSize = '12pt';
       }
     }, 2000);
@@ -845,7 +895,7 @@ function cRaffle () {
     $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
     $( '#home' ).removeClass( 'open' ).addClass( 'close' );
     $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-    $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
+    $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
 
       document.getElementById( 'logo' ).innerHTML = 'Clássico';
 }
@@ -856,7 +906,7 @@ function ccRaffle () {
   $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
   $( '#sg-manage' ).addClass( 'close' ).removeClass( 'open' );
   $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-    $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
+  $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
       document.getElementById( 'logo' ).innerHTML = 'Cara ou Coroa';
 }
 
@@ -878,7 +928,7 @@ function sgRaffle () {
   }
   else if ( isNew.checked === false ) { // Se EXISTE jogo salvo
     swal({
-    title: "Já existe um sorteio salvo",
+    title: "Já existe um sorteio salvo!",
     text: "Deseja Editar o sorteio salvo ou criar um Novo?",
     type: "warning",
     showCancelButton: true,
@@ -984,7 +1034,7 @@ $( '#sg-refresh' ).hide();
         $( '#home' ).removeClass( 'open' ).addClass( 'close' );
         $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
         $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
+        $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
 
         $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
 
@@ -1003,7 +1053,7 @@ $( '#sg-refresh' ).hide();
           $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
           $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
           $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-          $( '#bingo' ).removeClass( 'open' ).addClass( 'close' );
+          $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
 
           $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
 
@@ -1066,6 +1116,10 @@ function sgRaffleRefresh () {
 
 
 
+
+
+
+
 $( '.ui-color-picker .ui-color' ).on( 'click', function () {
     $( '.ui-color' ).css( 'border','' );
     $( this ).css( 'border','2px solid #000000' );
@@ -1075,110 +1129,128 @@ if ( !isLight.checked ) { // If is not dark
       $bg_uiColor.css( 'background-color', greenLight[0] );
       $btn_uiColor.css( 'background-color', greenLight[1] );
       $fnt_uiColor.css( 'color', greenLight[2] );
+      $bd_fntColor.css( 'color',greenLight[3] );
       localStorage.setItem( 'ui-color','green' );
     }
      else if ( $( this ).hasClass( 'azul' ) ) {
       $bg_uiColor.css( 'background-color', blueLight[0] );
       $btn_uiColor.css( 'background-color', blueLight[1] );
       $fnt_uiColor.css( 'color', blueLight[2] );
+      $bd_fntColor.css( 'color',blueLight[3] );
       localStorage.setItem( 'ui-color','blue' );
     }
      else if ( $( this ).hasClass( 'vermelho' ) ) {
       $bg_uiColor.css( 'background-color', redLight[0] );
       $btn_uiColor.css( 'background-color', redLight[1] );
       $fnt_uiColor.css( 'color', redLight[2] );
+      $bd_fntColor.css( 'color',redLight[3] );
       localStorage.setItem( 'ui-color','red' );
     }
      else if ( $( this ).hasClass( 'amarelo' ) ) {
       $bg_uiColor.css( 'background-color', yellowLight[0] );
       $btn_uiColor.css( 'background-color', yellowLight[1] );
       $fnt_uiColor.css( 'color', yellowLight[2] );
+      $bd_fntColor.css( 'color',yellowLight[3] );
       localStorage.setItem( 'ui-color','yellow' );
     }
      else if ( $( this ).hasClass( 'laranja' ) ) {
       $bg_uiColor.css( 'background-color', orangeLight[0] );
       $btn_uiColor.css( 'background-color', orangeLight[1] );
       $fnt_uiColor.css( 'color', orangeLight[2] );
+      $bd_fntColor.css( 'color',orangeLight[3] );
       localStorage.setItem( 'ui-color','orange' );
     }
      else if ( $( this ).hasClass( 'rosa' ) ) {
       $bg_uiColor.css( 'background-color', pinkLight[0] );
       $btn_uiColor.css( 'background-color', pinkLight[1] );
       $fnt_uiColor.css( 'color', pinkLight[2] );
+      $bd_fntColor.css( 'color',pinkLight[3] );
       localStorage.setItem( 'ui-color','pink' );
     }
      else if ( $( this ).hasClass( 'lilas' ) ) {
       $bg_uiColor.css( 'background-color', lilacLight[0] );
       $btn_uiColor.css( 'background-color', lilacLight[1] );
       $fnt_uiColor.css( 'color', lilacLight[2] );
+      $bd_fntColor.css( 'color',lilacLight[3] );
       localStorage.setItem( 'ui-color','lilac' );
     }
      else if ( $( this ).hasClass( 'ciano' ) ) {
       $bg_uiColor.css( 'background-color', cyanLight[0] );
       $btn_uiColor.css( 'background-color', cyanLight[1] );
       $fnt_uiColor.css( 'color', cyanLight[2] );
+      $bd_fntColor.css( 'color',cyanLight[3] );
       localStorage.setItem( 'ui-color','cyan' );
     }
      else if ( $( this ).hasClass( 'violeta' ) ) {
       $bg_uiColor.css( 'background-color', violetLight[0] );
       $btn_uiColor.css( 'background-color', violetLight[1] );
       $fnt_uiColor.css( 'color', violetLight[2] );
+      $bd_fntColor.css( 'color',violetLight[3] );
       localStorage.setItem( 'ui-color','violet' );
     }
   }
     else { // If is dark
       if ( $( this ).hasClass( 'verde' ) ) {
       $bg_uiColor.css( 'background-color', green[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', green[1] );
       $fnt_uiColor.css( 'color', green[2] );
+      $bd_fntColor.css( 'color',green[3] );
       localStorage.setItem( 'ui-color','green' );
     }
      else if ( $( this ).hasClass( 'azul' ) ) {
       $bg_uiColor.css( 'background-color', blue[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', blue[1] );
       $fnt_uiColor.css( 'color', blue[2] );
+      $bd_fntColor.css( 'color',blue[3] );
       localStorage.setItem( 'ui-color','blue' );
     }
      else if ( $( this ).hasClass( 'vermelho' ) ) {
       $bg_uiColor.css( 'background-color', red[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', red[1] );
       $fnt_uiColor.css( 'color', red[2] );
+      $bd_fntColor.css( 'color',red[3] );
       localStorage.setItem( 'ui-color','red' );
     }
      else if ( $( this ).hasClass( 'amarelo' ) ) {
       $bg_uiColor.css( 'background-color', yellow[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', yellow[1] );
       $fnt_uiColor.css( 'color', yellow[2] );
+      $bd_fntColor.css( 'color',yellow[3] );
       localStorage.setItem( 'ui-color','yellow' );
     }
      else if ( $( this ).hasClass( 'laranja' ) ) {
       $bg_uiColor.css( 'background-color', orange[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', orange[1] );
       $fnt_uiColor.css( 'color', orange[2] );
+      $bd_fntColor.css( 'color',orange[3] );
       localStorage.setItem( 'ui-color','orange' );
     }
      else if ( $( this ).hasClass( 'rosa' ) ) {
       $bg_uiColor.css( 'background-color', pink[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', pink[1] );
       $fnt_uiColor.css( 'color', pink[2] );
+      $bd_fntColor.css( 'color',pink[3] );
       localStorage.setItem( 'ui-color','pink' );
     }
      else if ( $( this ).hasClass( 'lilas' ) ) {
       $bg_uiColor.css( 'background-color', lilac[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', lilac[1] );
       $fnt_uiColor.css( 'color', lilac[2] );
+      $bd_fntColor.css( 'color',lilac[3] );
       localStorage.setItem( 'ui-color','lilac' );
     }
      else if ( $( this ).hasClass( 'ciano' ) ) {
       $bg_uiColor.css( 'background-color', cyan[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', cyan[1] );
       $fnt_uiColor.css( 'color', cyan[2] );
+      $bd_fntColor.css( 'color',cyan[3] );
       localStorage.setItem( 'ui-color','cyan' );
     }
      else if ( $( this ).hasClass( 'violeta' ) ) {
       $bg_uiColor.css( 'background-color', violet[0] );
-      $btn_uiColor.css( 'background-color', '' );
+      $btn_uiColor.css( 'background-color', violet[1] );
       $fnt_uiColor.css( 'color', violet[2] );
+      $bd_fntColor.css( 'color',violet[3] );
       localStorage.setItem( 'ui-color','violet' );
     }
     }
@@ -1189,22 +1261,11 @@ if ( !isLight.checked ) { // If is not dark
         text: 'Salvando alterações...',
         type: 'success',
         showConfirmButton: false,
-        timer: 3000
+        timer: 2000
       });
 });
 
 
-function lightMode () {
-  document.getElementById('light-styles').disabled  = false;
-  document.getElementById('dark-styles').disabled = true;
-  localStorage.setItem('is-light','true');
-}
-
-function darkMode () {
-  document.getElementById('dark-styles').disabled  = false;
-  document.getElementById('light-styles').disabled = true;
-  localStorage.setItem('is-light','false');
-}
 
 
 x.oninput = function () {
@@ -1296,3 +1357,83 @@ function Reload () {
   _s.src = 'js/sortegram.dev.js';
   document.body.appendChild( _s );
 };
+
+
+
+
+
+// Sobre o Sortegram
+
+document.getElementById('sg-about-text').innerHTML =
+'<h2>Sortegram</h2>\
+Autor: <b>Victor Ribeiro</b><br>\
+Versão: <b>v1.3.0</b><br>\
+Website: <b><a href=\"#\" onclick=\"window.open(\'http:\/\/sortegram.com\/\', \'_system\');\">http:\/\/sortegram.com\/<\/a></b><br>\
+<br>\
+O <b>Sortegram</b> é um pequeno aplicativo que você pode usar para sortear \
+pessoas, números e muitas outras coisas que você precisar. Basta adicionar os participantes e sorteá-los.<br><br>\
+Você pode ainda salvar a lista de participantes para continuar em outro momento. \
+Essa opção é útil para quem tem uma lista imensa de participantes e quer ir adicionando aos poucos.<br><br>\
+Para quem quer apenas sortear números aleatórios, o <b>Sortegram</b> conta também com o <b>Sorteio Clássico</b>. \
+Nele você pode sortear um ou vários números, de modo que nenhum deles se repita.<br><br>\
+O aplicativo conta ainda com o modo <b>Cara ou Coroa</b>, em que você não precisa \
+de uma moeda de verdade para jogar. Basta entrar no modo (apertando no ícone do meio da tela inicial) e tocar na moeda. \
+Os resultados são completamente aleatórios e você não precisa se preocupar com trapaças.<br><br>\
+Se você tem alguma dúvida de como utilizar o aplicativo, ou apenas quer dar seu feedback, \
+elogiando ou dizendo em que o aplicativo pode melhorar, mande um email para o desenvolvedor em <a href=\'mailto:victor_ribeiro135@hotmail.com?subject=Feedback Sortegram\'>victor_ribeiro135@hotmail.com</a>. ;)\
+';
+
+function About () {
+  cResult.style.color = '#FFF';
+  cResult.style.backgroundColor = 'rgba(236, 248, 255, 0.5)';
+  cResult.style.borderTop = '3px solid #FFF';
+  cResult.style.borderBottom = '3px solid #FFF';
+      $( '#sg-about' ).removeClass( 'close' ).addClass( 'open' );
+      $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#home' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
+      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
+  document.getElementById( 'logo' ).innerHTML = 'Sobre';
+  $( '#user-names-manage .delete-user' ).hide();
+  sgQuit();
+  cNew();
+}
+
+
+
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+  // Announce the new orientation number
+  if ( window.orientation === 90 ) {
+    $('.splash-orientation').show();
+    $('.splash-orientation-img-left').show();
+    $('.splash-orientation-img-right').hide();
+  } else if ( window.orientation === -90 ) {
+    $('.splash-orientation').show();
+    $('.splash-orientation-img-right').show();
+    $('.splash-orientation-img-left').hide();
+  } else {
+    $('.splash-orientation').hide();
+  }
+}, false);
+
+/* Shake event (only testing)
+var myShakeEvent = new Shake({
+    threshold: 15, // optional shake strength threshold
+    timeout: 1000 // optional, determines the frequency of event generation
+});
+
+myShakeEvent.start();
+
+window.addEventListener('shake', shakeEventDidOccur, false);
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+    scStart();
+    sgStart();
+    ccStart();
+}
+*/
