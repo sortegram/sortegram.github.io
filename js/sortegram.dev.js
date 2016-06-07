@@ -6,7 +6,6 @@
   licence : MIT
 */
 
-'use strict';
 // Define all vars
 var d = document,
     w = window,
@@ -18,51 +17,53 @@ var d = document,
     show = 'block',
     hide = 'none',
 
-    // Colors vars [background, button, font]
-    green = ['#116D01','#00B70B','#FFF','#FFF'],
-    blue = ['#1763D0','#79A9EF','#FFF','#FFF'],
-    red = ['#BB2E2E','#E68383','#FFF','#FFF'],
-    yellow = ['#7B6803','#DED516','#FFF','#FFF'],
-    orange = ['#C7781B','#BD2F2F','#FFF','#FFF'],
-    pink = ['#C35AC1','#FF8FF8','#FFF','#FFF'],
-    lilac = ['#9B4AD0','#C79BEA','#FFF','#FFF'],
-    cyan = ['#009BA9','#75CDEC','#FFF','#FFF'],
-    violet = ['#96197C','#D84EFD','#FFF','#FFF'],
-
-    // Colors vars [background, button, font, font body]
-    greenLight = ['#ABDCA2','#7DD887','#043A08', '#043A08'],///
-    blueLight = ['#B1CBF1','#8DE2E1','#0448AD','#040A3A'],///
-    redLight = ['#FBC6C6','#DA0808','#8A1D1D','#8A1D1D'],
-    yellowLight = ['#EAEA6D','#DAD108','#585308','#585308'],
-    orangeLight = ['#FBE5C6','#DA8408','#581B08','#581B08'],
-    pinkLight = ['#FEDEFF','#FF89F7','#690465','#690465'],
-    lilacLight = ['#ECDEFF','#DB89FF','#5A0469','#5A0469'],
-    cyanLight = ['#96FFEF','#57B9CE','#045169','#045169'],
-    violetLight = ['#FC97FF','#BA57CE','#690465','#690465'],
-
     // Number input vars
     n = document.getElementById( 'n' ),
     x = document.getElementById( 'x' ),
     y = document.getElementById( 'y' ),
 
     // DOM vars
-    $bg_uiColor = $( '#cover, #sidebar, .splash-loader' ),
-    $btn_uiColor = $( '#sg-raffle, #c-raffle, #cc-raffle, #b-raffle, .new-btn, .new-btn-manage, .sort-btn, #c-result, #sg-done, #sg-refresh' ),
-    $fnt_uiColor = $( 'body' ),
-    $bd_fntColor = $( '#logo, #input-username-lbl, .sidebar-op, #sg-current, #sg-current-2, p, #number-of-participants, .new-btn, .new-btn-manage, .sort-btn' ),
-
     cResult = document.getElementById( 'c-result' ),
     sgResult = document.getElementById( 'sg-result' ),
-    userName = document.getElementById( 'username' ),
-    inputUserNameLabel = document.getElementById( 'input-username-lbl' ),
-    sgNoPEdit = document.getElementById( 'number-of-participants' ),
-    sgNoP = document.getElementById( 'number-of-participants-2' ),
-    sgManage = document.getElementById( 'sg-manage-btn' ),
-    NoPdiv = document.getElementById( 'NoPdiv' ),
-    savedNames = document.getElementById( 'user-names-2' ),
-    savedNamesEdit = document.getElementById( 'user-names' ),
-    savedNamesMng = document.getElementById( 'user-names-manage' ),
-    saveBtn = document.getElementById( 'sg-save' ),
+    userName_Input = document.getElementById( 'userName_Input' ),
+    inputUserNameLabel = document.getElementById( 'userName_Input-Label' ),
+    sg_Number_of_PartEditing = document.getElementById( 'part_Number' ),
+    sg_Number_of_Part = document.getElementById( 'part_Number-2' ),
+    part_NumberDiv = document.getElementById( 'part_NumberDiv' ),
+    part_List2 = document.getElementById( 'part_List-2' ),
+    part_List = document.getElementById( 'part_List' ),
+    saveBtn = document.getElementById( 'sg_Save' ),
+    saveBtn1 = document.getElementById( 'sg_Save-1' ),
+    saveBtn2 = document.getElementById( 'sg_Save-2' ),
+    saveBtn3 = document.getElementById( 'sg_Save-3' ),
+    saveBtn4 = document.getElementById( 'sg_Save-4' ),
+    saveBtn5 = document.getElementById( 'sg_Save-5' ),
+    saveBtn6 = document.getElementById( 'sg_Save-6' ),
+    saveBtn7 = document.getElementById( 'sg_Save-7' ),
+    saveBtn8 = document.getElementById( 'sg_Save-8' ),
+    saveBtn9 = document.getElementById( 'sg_Save-9' ),
+    saveBtn10 = document.getElementById( 'sg_Save-10' ),
+    dltBtn = document.getElementById( 'sg_Delete' ),
+    deleteBtn1 = document.getElementById( 'sg_Delete-1' ),
+    deleteBtn2 = document.getElementById( 'sg_Delete-2' ),
+    deleteBtn3 = document.getElementById( 'sg_Delete-3' ),
+    deleteBtn4 = document.getElementById( 'sg_Delete-4' ),
+    deleteBtn5 = document.getElementById( 'sg_Delete-5' ),
+    deleteBtn6 = document.getElementById( 'sg_Delete-6' ),
+    deleteBtn7 = document.getElementById( 'sg_Delete-7' ),
+    deleteBtn8 = document.getElementById( 'sg_Delete-8' ),
+    deleteBtn9 = document.getElementById( 'sg_Delete-9' ),
+    deleteBtn10 = document.getElementById( 'sg_Delete-10' ),
+    renameBtn1 = document.getElementById( 'sg_Rename-1' ),
+    renameBtn2 = document.getElementById( 'sg_Rename-2' ),
+    renameBtn3 = document.getElementById( 'sg_Rename-3' ),
+    renameBtn4 = document.getElementById( 'sg_Rename-4' ),
+    renameBtn5 = document.getElementById( 'sg_Rename-5' ),
+    renameBtn6 = document.getElementById( 'sg_Rename-6' ),
+    renameBtn7 = document.getElementById( 'sg_Rename-7' ),
+    renameBtn8 = document.getElementById( 'sg_Rename-8' ),
+    renameBtn9 = document.getElementById( 'sg_Rename-9' ),
+    renameBtn10 = document.getElementById( 'sg_Rename-10' ),
     $deleteUser = $( '.delete-user' ),
     deleteBtn = document.getElementById( 'delete-all' ),
     isNew = document.getElementById( 'is-new' ),
@@ -73,775 +74,388 @@ var d = document,
     sgCurrent = document.getElementById( 'sg-current' ),
 
     // LocalStorage vars (all of them starts with underscore)
-    _uiColor = localStorage.getItem( 'ui-color' ),
-    _isNew = localStorage.getItem( 'is-new' ),
-    _isLight = localStorage.getItem( 'is-light' ),
-    _savedNamesEdit = localStorage.getItem( 'saved-names-edit' );
+    _uiColor = window.localStorage.getItem( 'ui-color' ),
+    _isNew = window.localStorage.getItem( 'is-new' ),
+    _isLight = window.localStorage.getItem( 'is-light' ),
+
+    _savedItemName1 = window.localStorage.getItem('saved-item-1-name'), _savedItemName2 = window.localStorage.getItem('saved-item-2-name'),
+    _savedItemName3 = window.localStorage.getItem('saved-item-3-name'), _savedItemName4 = window.localStorage.getItem('saved-item-4-name'),
+    _savedItemName5 = window.localStorage.getItem('saved-item-5-name'), _savedItemName6 = window.localStorage.getItem('saved-item-6-name'),
+    _savedItemName7 = window.localStorage.getItem('saved-item-7-name'), _savedItemName8 = window.localStorage.getItem('saved-item-8-name'),
+    _savedItemName9 = window.localStorage.getItem('saved-item-9-name'), _savedItemName10 = window.localStorage.getItem('saved-item-10-name'),
+
+    _savedItemLastEdit1 = window.localStorage.getItem('saved-item-1_LastEdit'), _savedItemLastEdit2 = window.localStorage.getItem('saved-item-2_LastEdit'),
+    _savedItemLastEdit3 = window.localStorage.getItem('saved-item-3_LastEdit'), _savedItemLastEdit4 = window.localStorage.getItem('saved-item-4_LastEdit'),
+    _savedItemLastEdit5 = window.localStorage.getItem('saved-item-5_LastEdit'), _savedItemLastEdit6 = window.localStorage.getItem('saved-item-6_LastEdit'),
+    _savedItemLastEdit7 = window.localStorage.getItem('saved-item-7_LastEdit'), _savedItemLastEdit8 = window.localStorage.getItem('saved-item-8_LastEdit'),
+    _savedItemLastEdit9 = window.localStorage.getItem('saved-item-9_LastEdit'), _savedItemLastEdit10 = window.localStorage.getItem('saved-item-10_LastEdit'),
+
+    _savedItemCreation1 = window.localStorage.getItem('saved-item-1_Creation'), _savedItemCreation2 = window.localStorage.getItem('saved-item-2_Creation'),
+    _savedItemCreation3 = window.localStorage.getItem('saved-item-3_Creation'), _savedItemCreation4 = window.localStorage.getItem('saved-item-4_Creation'),
+    _savedItemCreation5 = window.localStorage.getItem('saved-item-5_Creation'), _savedItemCreation6 = window.localStorage.getItem('saved-item-6_Creation'),
+    _savedItemCreation7 = window.localStorage.getItem('saved-item-7_Creation'), _savedItemCreation8 = window.localStorage.getItem('saved-item-8_Creation'),
+    _savedItemCreation9 = window.localStorage.getItem('saved-item-9_Creation'), _savedItemCreation10 = window.localStorage.getItem('saved-item-10_Creation'),
+
+    _savedItemData1 = window.localStorage.getItem('saved-item-1-data'), _savedItemData2 = window.localStorage.getItem('saved-item-2-data'),
+    _savedItemData3 = window.localStorage.getItem('saved-item-3-data'), _savedItemData4 = window.localStorage.getItem('saved-item-4-data'),
+    _savedItemData5 = window.localStorage.getItem('saved-item-5-data'), _savedItemData6 = window.localStorage.getItem('saved-item-6-data'),
+    _savedItemData7 = window.localStorage.getItem('saved-item-7-data'), _savedItemData8 = window.localStorage.getItem('saved-item-8-data'),
+    _savedItemData9 = window.localStorage.getItem('saved-item-9-data'), _savedItemData10 = window.localStorage.getItem('saved-item-10-data'),
+
+    _savedItem1 = window.localStorage.getItem('saved-item-1'), _savedItem2 = window.localStorage.getItem('saved-item-2'),
+    _savedItem3 = window.localStorage.getItem('saved-item-3'), _savedItem4 = window.localStorage.getItem('saved-item-4'),
+    _savedItem5 = window.localStorage.getItem('saved-item-5'), _savedItem6 = window.localStorage.getItem('saved-item-6'),
+    _savedItem7 = window.localStorage.getItem('saved-item-7'), _savedItem8 = window.localStorage.getItem('saved-item-8'),
+    _savedItem9 = window.localStorage.getItem('saved-item-9'), _savedItem10 = window.localStorage.getItem('saved-item-10'),
+
+    savedItemName1 = document.getElementById('saved_item-name-1'), savedItemName2 = document.getElementById('saved_item-name-2'),
+    savedItemName3 = document.getElementById('saved_item-name-3'), savedItemName4 = document.getElementById('saved_item-name-4'),
+    savedItemName5 = document.getElementById('saved_item-name-5'), savedItemName6 = document.getElementById('saved_item-name-6'),
+    savedItemName7 = document.getElementById('saved_item-name-7'), savedItemName8 = document.getElementById('saved_item-name-8'),
+    savedItemName9 = document.getElementById('saved_item-name-9'), savedItemName10 = document.getElementById('saved_item-name-10'),
+
+    savedItem1 = document.getElementById('saved_item-1'), savedItem2 = document.getElementById('saved_item-2'),
+    savedItem3 = document.getElementById('saved_item-3'), savedItem4 = document.getElementById('saved_item-4'),
+    savedItem5 = document.getElementById('saved_item-5'), savedItem6 = document.getElementById('saved_item-6'),
+    savedItem7 = document.getElementById('saved_item-7'), savedItem8 = document.getElementById('saved_item-8'),
+    savedItem9 = document.getElementById('saved_item-9'), savedItem10 = document.getElementById('saved_item-10'),
+
+    savedItemPartAmount1 = document.getElementById('saved_item-PartAmount-1'), savedItemPartAmount2 = document.getElementById('saved_item-PartAmount-2'),
+    savedItemPartAmount3 = document.getElementById('saved_item-PartAmount-3'), savedItemPartAmount4 = document.getElementById('saved_item-PartAmount-4'),
+    savedItemPartAmount5 = document.getElementById('saved_item-PartAmount-5'), savedItemPartAmount6 = document.getElementById('saved_item-PartAmount-6'),
+    savedItemPartAmount7 = document.getElementById('saved_item-PartAmount-7'), savedItemPartAmount8 = document.getElementById('saved_item-PartAmount-8'),
+    savedItemPartAmount9 = document.getElementById('saved_item-PartAmount-9'), savedItemPartAmount10 = document.getElementById('saved_item-PartAmount-10'),
+
+    savedItemData1 = document.getElementById('saved_item-data-1'), savedItemData2 = document.getElementById('saved_item-data-2'),
+    savedItemData3 = document.getElementById('saved_item-data-3'), savedItemData4 = document.getElementById('saved_item-data-4'),
+    savedItemData5 = document.getElementById('saved_item-data-5'), savedItemData6 = document.getElementById('saved_item-data-6'),
+    savedItemData7 = document.getElementById('saved_item-data-7'), savedItemData8 = document.getElementById('saved_item-data-8'),
+    savedItemData9 = document.getElementById('saved_item-data-9'), savedItemData10 = document.getElementById('saved_item-data-10'),
+
+    savedItem1_info = document.getElementById('saved_item-info-btn-1'), savedItem2_info = document.getElementById('saved_item-info-btn-2'),
+    savedItem3_info = document.getElementById('saved_item-info-btn-3'), savedItem4_info = document.getElementById('saved_item-info-btn-4'),
+    savedItem5_info = document.getElementById('saved_item-info-btn-5'), savedItem6_info = document.getElementById('saved_item-info-btn-6'),
+    savedItem7_info = document.getElementById('saved_item-info-btn-7'), savedItem8_info = document.getElementById('saved_item-info-btn-8'),
+    savedItem9_info = document.getElementById('saved_item-info-btn-9'), savedItem10_info = document.getElementById('saved_item-info-btn-10'),
+
+    savedItem1_delete = document.getElementById('saved_item-delete-btn-1'), savedItem2_delete = document.getElementById('saved_item-delete-btn-2'),
+    savedItem3_delete = document.getElementById('saved_item-delete-btn-3'), savedItem4_delete = document.getElementById('saved_item-delete-btn-4'),
+    savedItem5_delete = document.getElementById('saved_item-delete-btn-5'), savedItem6_delete = document.getElementById('saved_item-delete-btn-6'),
+    savedItem7_delete = document.getElementById('saved_item-delete-btn-7'), savedItem8_delete = document.getElementById('saved_item-delete-btn-8'),
+    savedItem9_delete = document.getElementById('saved_item-delete-btn-9'), savedItem10_delete = document.getElementById('saved_item-delete-btn-10'),
+
+    savedItem1_edit = document.getElementById('saved_item-edit-btn-1'), savedItem2_edit = document.getElementById('saved_item-edit-btn-2'),
+    savedItem3_edit = document.getElementById('saved_item-edit-btn-3'), savedItem4_edit = document.getElementById('saved_item-edit-btn-4'),
+    savedItem5_edit = document.getElementById('saved_item-edit-btn-5'), savedItem6_edit = document.getElementById('saved_item-edit-btn-6'),
+    savedItem7_edit = document.getElementById('saved_item-edit-btn-7'), savedItem8_edit = document.getElementById('saved_item-edit-btn-8'),
+    savedItem9_edit = document.getElementById('saved_item-edit-btn-9'), savedItem10_edit = document.getElementById('saved_item-edit-btn-10'),
+
+    savedItem1_start = document.getElementById('saved_item-start-btn-1'), savedItem2_start = document.getElementById('saved_item-start-btn-2'),
+    savedItem3_start = document.getElementById('saved_item-start-btn-3'), savedItem4_start = document.getElementById('saved_item-start-btn-4'),
+    savedItem5_start = document.getElementById('saved_item-start-btn-5'), savedItem6_start = document.getElementById('saved_item-start-btn-6'),
+    savedItem7_start = document.getElementById('saved_item-start-btn-7'), savedItem8_start = document.getElementById('saved_item-start-btn-8'),
+    savedItem9_start = document.getElementById('saved_item-start-btn-9'), savedItem10_start = document.getElementById('saved_item-start-btn-10');
 
 
+'use strict';
 
+setInterval( function ()
+      {
+        if ( _isNew === 'true' )
+         {
+           isNew.checked = true;
+         }
+          else {
+            isNew.checked = false;
+          }
 
-setInterval(function() {
-  if ( _isNew === 'true' ) {
-  isNew.checked = true;
-} else {
-  isNew.checked = false;
-}
+        if (  _savedItem1 === '' && _savedItem2 === ''
+           && _savedItem3 === '' && _savedItem4 === ''
+           && _savedItem5 === '' && _savedItem6 === ''
+           && _savedItem7 === '' && _savedItem8 === ''
+           && _savedItem9 === '' && _savedItem10 === '' )
+          {
+             window.localStorage.setItem( 'is-new','true' );
+             isNew.checked = true;
+          }
+            else
+               {
+                  window.localStorage.setItem( 'is-new','false' );
+                  isNew.checked = false;
+            }
 }, 100);
 
 
 
-if ( _isLight === 'true' ) {
-  isLight.checked = false
-} else {
-  isLight.checked = true
-}
-
-setInterval(function() {
-  if ( isLight.checked === true ) {
-  localStorage.setItem( 'is-light','false' )
-} else {
-  localStorage.setItem( 'is-light','true' )
-}
-}, 100);
-
-
-
-
-if ( !localStorage['is-new'] ) {
-  localStorage.setItem( 'is-new','true' );
-  localStorage.setItem( 'is-light','false' );
-  localStorage.setItem( 'saved-names-edit','' );
-  sgManage.style.display = hide;
-  document.location.reload();
-}
-if ( _isNew === 'true' ) {
-  sgManage.style.display = hide;
-}
-if ( _isNew === 'false' ) {
-  sgManage.style.display = show;
-  $( '#user-names' ).html(_savedNamesEdit);
-}
-
-
-
-
-// Funções a serem carregadas na inicialização
-function appLoad () {
-  if ( _isLight === 'false' ) { // If is Dark
-        if ( !_uiColor ) {
-          localStorage.setItem( 'ui-color','' );
-          $bg_uiColor.css( 'background-color',green[0] );
-          $btn_uiColor.css( 'background-color',green[1] );
-          $fnt_uiColor.css( 'color',green[2] );
-          $bd_fntColor.css( 'color',green[3] );
-          $( '.verde' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'green' ) {
-              $bg_uiColor.css( 'background-color',green[0] );
-              $btn_uiColor.css( 'background-color',green[1] );
-              $fnt_uiColor.css( 'color',green[2] );
-              $bd_fntColor.css( 'color',green[3] );
-              $( '.verde' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'blue' ) {
-              $bg_uiColor.css( 'background-color',blue[0] );
-              $btn_uiColor.css( 'background-color',blue[1] );
-              $fnt_uiColor.css( 'color',blue[2] );
-              $bd_fntColor.css( 'color',blue[3] );
-              $( '.azul' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'red' ) {
-              $bg_uiColor.css( 'background-color',red[0] );
-              $btn_uiColor.css( 'background-color',red[1] );
-              $fnt_uiColor.css( 'color',red[2] );
-              $bd_fntColor.css( 'color',red[3] );
-              $( '.vermelho' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'yellow' ) {
-              $bg_uiColor.css( 'background-color',yellow[0] );
-              $btn_uiColor.css( 'background-color',yellow[1] );
-              $fnt_uiColor.css( 'color',yellow[2] );
-              $bd_fntColor.css( 'color',yellow[3] );
-              $( '.amarelo' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'orange' ) {
-              $bg_uiColor.css( 'background-color',orange[0] );
-              $btn_uiColor.css( 'background-color',orange[1] );
-              $fnt_uiColor.css( 'color',orange[2] );
-              $bd_fntColor.css( 'color',orange[3] );
-              $( '.laranja' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'pink' ) {
-              $bg_uiColor.css( 'background-color',pink[0] );
-              $btn_uiColor.css( 'background-color',pink[1] );
-              $fnt_uiColor.css( 'color',pink[2] );
-              $bd_fntColor.css( 'color',pink[3] );
-              $( '.rosa' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'lilac' ) {
-              $bg_uiColor.css( 'background-color',lilac[0] );
-              $btn_uiColor.css( 'background-color',lilac[1] );
-              $fnt_uiColor.css( 'color',lilac[2] );
-              $bd_fntColor.css( 'color',lilac[3] );
-              $( '.lilas' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'cyan' ) {
-              $bg_uiColor.css( 'background-color',cyan[0] );
-              $btn_uiColor.css( 'background-color',cyan[1] );
-              $fnt_uiColor.css( 'color',cyan[2] );
-              $bd_fntColor.css( 'color',cyan[3] );
-              $( '.ciano' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'violet' ) {
-              $bg_uiColor.css( 'background-color',violet[0] );
-              $btn_uiColor.css( 'background-color',violet[1] );
-              $fnt_uiColor.css( 'color',violet[2] );
-              $bd_fntColor.css( 'color',violet[3] );
-              $( '.violeta' ).css( 'border','2px solid #000000' );
-        }
-    }
-    else { // If is Light
-      if ( !_uiColor ) {
-          localStorage.setItem( 'ui-color','' );
-          $bg_uiColor.css( 'background-color',greenLight[0] );
-          $btn_uiColor.css( 'background-color',greenLight[1] );
-          $fnt_uiColor.css( 'color',greenLight[2] );
-          $bd_fntColor.css( 'color',greenLight[3] );
-          $( '.verde' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'green' ) {
-              $bg_uiColor.css( 'background-color',greenLight[0] );
-              $btn_uiColor.css( 'background-color',greenLight[1] );
-              $fnt_uiColor.css( 'color',greenLight[2] );
-              $bd_fntColor.css( 'color',greenLight[3] );
-              $( '.verde' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'blue' ) {
-              $bg_uiColor.css( 'background-color',blueLight[0] );
-              $btn_uiColor.css( 'background-color',blueLight[1] );
-              $fnt_uiColor.css( 'color',blueLight[2] );
-              $bd_fntColor.css( 'color',blueLight[3] );
-              $( '.azul' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'red' ) {
-              $bg_uiColor.css( 'background-color',redLight[0] );
-              $btn_uiColor.css( 'background-color',redLight[1] );
-              $fnt_uiColor.css( 'color',redLight[2] );
-              $bd_fntColor.css( 'color',redLight[3] );
-              $( '.vermelho' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'yellow' ) {
-              $bg_uiColor.css( 'background-color',yellowLight[0] );
-              $btn_uiColor.css( 'background-color',yellowLight[1] );
-              $fnt_uiColor.css( 'color',yellowLight[2] );
-              $bd_fntColor.css( 'color',yellowLight[3] );
-              $( '.amarelo' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'orange' ) {
-              $bg_uiColor.css( 'background-color',orangeLight[0] );
-              $btn_uiColor.css( 'background-color',orangeLight[1] );
-              $fnt_uiColor.css( 'color',orangeLight[2] );
-              $bd_fntColor.css( 'color',orangeLight[3] );
-              $( '.laranja' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'pink' ) {
-              $bg_uiColor.css( 'background-color',pinkLight[0] );
-              $btn_uiColor.css( 'background-color',pinkLight[1] );
-              $fnt_uiColor.css( 'color',pinkLight[2] );
-              $bd_fntColor.css( 'color',pinkLight[3] );
-              $( '.rosa' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'lilac' ) {
-              $bg_uiColor.css( 'background-color',lilacLight[0] );
-              $btn_uiColor.css( 'background-color',lilacLight[1] );
-              $fnt_uiColor.css( 'color',lilacLight[2] );
-              $bd_fntColor.css( 'color',lilacLight[3] );
-              $( '.lilas' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'cyan' ) {
-              $bg_uiColor.css( 'background-color',cyanLight[0] );
-              $btn_uiColor.css( 'background-color',cyanLight[1] );
-              $fnt_uiColor.css( 'color',cyanLight[2] );
-              $bd_fntColor.css( 'color',cyanLight[3] );
-              $( '.ciano' ).css( 'border','2px solid #000000' );
-        } else if ( _uiColor === 'violet' ) {
-              $bg_uiColor.css( 'background-color',violetLight[0] );
-              $btn_uiColor.css( 'background-color',violetLight[1] );
-              $fnt_uiColor.css( 'color',violetLight[2] );
-              $bd_fntColor.css( 'color',violetLight[3] );
-              $( '.violeta' ).css( 'border','2px solid #000000' );
-        }
-    }
-        $('#content').show();
-
-      setTimeout(function () {
-        $('.splash-loader').fadeOut('slow');
-      }, 2000);
-};
-//
-
-
-
-
-
-
-
-
-$( sgNoPEdit ).html( $( '#user-names > dt' ).size() );
-
-
-
-
-if ( $( '#user-names > dt' ).size() === 0 ) {
-  document.getElementById( 'part-plural' ).innerHTML = 's';
-  document.getElementById( 'part-plural-2' ).innerHTML = 's';
-}
- else if ( $( '#user-names > dt' ).size() === 1 ) {
-   document.getElementById( 'part-plural' ).innerHTML = '';
-   document.getElementById( 'part-plural-2' ).innerHTML = '';
- }
-  else {
-   document.getElementById( 'part-plural' ).innerHTML = 's';
-   document.getElementById( 'part-plural-2' ).innerHTML = 's';
- }
-
-
-
-
-// Rola a lista de participantes para o final
-function downList() {
-    $( '#user-names' ).animate({
-    scrollTop: $( '#user-names' )[0].scrollHeight
-  }, 200);
-}
-
-
-
-
-// Inicio
-function home() {
-  cResult.style.color = '#FFF';
-  cResult.style.backgroundColor = 'rgba(236, 248, 255, 0.5)';
-  cResult.style.borderTop = '3px solid #FFF';
-  cResult.style.borderBottom = '3px solid #FFF';
-      $( '#home' ).removeClass( 'close' ).addClass( 'open' );
-      $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-  document.getElementById( 'logo' ).innerHTML = 'Sortegram';
-  $( '#trophy' ).hide();
-  $( '#sg-refresh' ).hide();
-  sgQuit();
-  cNew();
-}
-
-
-
-
-// Gerenciar SS
-function sgManageBtn () {
-  cResult.style.color = '#FFF';
-  cResult.style.backgroundColor = 'rgba(236, 248, 255, 0.5)';
-  cResult.style.borderTop = '3px solid #FFF';
-  cResult.style.borderBottom = '3px solid #FFF';
-      $( '#sg-manage' ).removeClass( 'close' ).addClass( 'open' );
-      $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-  document.getElementById( 'logo' ).innerHTML = 'Sorteio salvo';
-  $( '#user-names-manage .delete-user' ).hide();
-  sgQuit();
-  cNew();
-  Last();
-}
-
-
-
-
-// Ultimo sorteio
-function Last () {
-
-      $( '#sg-manage' ).removeClass( 'close' ).addClass( 'open' );
-      $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-
-if ( $( '#user-names' ).html() === _savedNamesEdit ) {
-      $( '#user-names-manage' ).html(_savedNamesEdit);
-}
- else if ( $( '#user-names' ).html() === '' ) {
-      $( '#user-names-manage' ).html(_savedNamesEdit);
-}
- else if ( $( '#user-names-manage' ).html() === '' ) {
-      $( '#user-names-manage' ).html(_savedNamesEdit);
-}
- else {
-      $( '#user-names-manage' ).html($( '#user-names' ).html());
+setInterval( function ()
+ {
+  if ( isLight.checked )
+     {
+      localStorage.setItem( 'is-light','false' )
   }
-      document.getElementById( 'logo' ).innerHTML = 'Sorteio salvo';
-      $('#user-names-manage .delete-user').hide();
-}
+    else
+      {
+        localStorage.setItem( 'is-light','true' )
+    };
+}, 100);
 
-function editLast () {
 
-      userName.value = '';
-      userName.focus();
-      $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
 
-      $( '#sortegram' ).removeClass( 'close' ).addClass( 'open' );
-      $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
 
-        document.getElementById( 'logo' ).innerHTML = 'Editar';
-        document.getElementById( 'user-names' ).innerHTML = _savedNamesEdit;
-        changeNumber();
 
-      saveBtn.disabled = true;
-      saveBtn.innerHTML = 'Salvo';
-      saveBtn.style.backgroundImage = 'url(img/ic_done_white_24dp_1x.png)';
 
-      Reload();
-}
+function status ( msg )
+ {
+   document.getElementById( 'statusTitle_Bar' ).innerHTML = msg;
+};
+
+
+
+$( '#notifica-dica' ).click(function ()
+ {
+   $( '#notifica-dica' )
+    .fadeOut( 'fast' );
+});
+
+
+
+
+function sgTogglePlural ()
+  {
+    if ( $( '#part_List > dt' ).size() === 0 )
+      {
+        document.getElementById( 'part-plural' ).innerHTML = 's';
+        document.getElementById( 'part-plural-2' ).innerHTML = 's';
+    }
+     else
+        if ( $( '#part_List > dt' ).size() === 1 )
+         {
+           document.getElementById( 'part-plural' ).innerHTML = '';
+           document.getElementById( 'part-plural-2' ).innerHTML = '';
+       }
+        else
+          {
+           document.getElementById( 'part-plural' ).innerHTML = 's';
+           document.getElementById( 'part-plural-2' ).innerHTML = 's';
+       }
+};
+
+
+
+
+
+// Abrir menu de pausa > Configurações > Tela Cheia.
+
+$('#pause-fullScreen-off').on('click', function()
+ {
+  if ( document.exitFullscreen )
+     {
+       document.ExitFullscreen();
+  }
+   else
+      if ( document.msExitFullscreen )
+        {
+          document.msExitFullscreen();
+   }
+     else
+        if ( document.mozExitFullScreen )
+          {
+            document.mozExitFullScreen();
+     }
+       else
+          if ( document.webkitExitFullscreen )
+            {
+              document.webkitExitFullscreen();
+       }
+  $('#pause-fullScreen-off').hide();
+  $('#pause-fullScreen-on').show();
+});
+
+$('#pause-fullScreen-on').on('click', function() {
+  if ( document.documentElement.requestFullscreen )
+      {
+        document.documentElement.requestFullscreen();
+   }
+    else
+       if ( document.documentElement.msRequestFullscreen )
+          {
+            document.documentElement.msRequestFullscreen();
+    }
+      else
+        if ( document.documentElement.mozRequestFullScreen )
+           {
+             document.documentElement.mozRequestFullScreen();
+      }
+        else
+          if ( document.documentElement.webkitRequestFullscreen )
+             {
+               document.documentElement.webkitRequestFullscreen();
+        }
+  $('#pause-fullScreen-on').hide();
+  $('#pause-fullScreen-off').show();
+});
+
+
 
 
 
 
 
 // Reinicia o Sorteio Clássico
-function cNew () {
+function cNew ()
+{
   cGo.style.display = show;
   cResult.style.display = hide;
-  $( '.new-btn, .back-to-home-btn' ).hide();
+  $( '[onclick="cNew()"]' ).hide();
   cCurrent.innerHTML = '';
   n.removeAttribute( 'disabled' );
   x.removeAttribute( 'disabled' );
   y.removeAttribute( 'disabled' );
   cGo.removeAttribute( 'disabled' );
-}
+
+  hlTip(5000);
+};
 
 
 
 // Reinicia o Sorteio Sortegram
 function sgNew () {
+  saveBtn.style.display = 'inline-block';
+  dltBtn.style.display = 'inline-block';
+    hideSaveBtn();
+
   sgGo.style.display = show;
   sgResult.style.display = hide;
   $( '.new-btn, .back-to-home-btn' ).hide();
   sgCurrent.innerHTML = '';
   sgGo.removeAttribute( 'disabled' );
 
+  $('#part_List-2').css({'height':''});
+
       // Esconde o trofeu
-    $( '#trophy' ).hide();
+    $( '#trophy' ).remove();
 
-    $( '#sg-refresh' ).hide();
+    $( '#sg_start_Btn' ).hide();
 
-    NoPdiv.style.display = show;
+    part_NumberDiv.style.display = show;
 
-      userName.value = '';
-      userName.focus();
+      userName_Input.value = '';
+
+      setTimeout(function ()
+         {
+           $( '#userName_Input' ).focus()
+      }, 1500);
 
         $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
 
-        $( '#sortegram' ).removeClass( 'close' ).addClass( 'open' );
-        $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
+        goTo( '#sortegram' );
 
-        document.getElementById( 'logo' ).innerHTML = 'Adicionar';
+        status('Novo sorteio');
 
-      savedNamesEdit = document.getElementById( 'user-names' ).innerHTML = '';
-      document.getElementById( 'user-names-2' ).innerHTML = '';
+      part_List = document.getElementById( 'part_List' ).innerHTML = '';
+      document.getElementById( 'part_List-2' ).innerHTML = '';
 
 
       changeNumber();
 
       saveBtn.disabled = true;
-      saveBtn.innerHTML = 'Salvar';
       saveBtn.style.backgroundImage = 'url(img/appbar.save.png)';
 }
 
 
 
 
-function sgQuit () {
-  $( '#trophy' ).hide();
-  $( '#sg-refresh' ).hide();
-
-  sgGo.style.display = show;
-  sgResult.style.display = hide;
-  $( '.new-btn, .back-to-home-btn' ).hide();
-  sgCurrent.innerHTML = '';
-  sgGo.removeAttribute( 'disabled' );
-}
-
-
-
-// Começa o Sorteio Clássico
-function cStart () {
-// Cria uma array com a quantidade de numeros dada de modo que não se repitam
-var arr = []
-while ( arr.length < n.value ) {
-  var randomnumber = Math.floor(Math.random() * ((Number(y.value) - Number(x.value)) + 1) + Number(x.value))
-  var found = false;
-  for ( var i = 0; i < arr.length; i++ ) {
-  if ( arr[i] === randomnumber ) {
-    found = true;
-    break
-    }
-  }
-  if ( !found ) {
-    arr[arr.length] = randomnumber
-    };
-}
-
-  if ( y.value.length !== 0 || x.value.length !== 0 // Se os campos x e Y estiverem preenchidos
-    && x.value.match(/^(\d){0,7}$/g) //
-    && y.value.match(/^(\d){0,7}$/g) // E se eles possuirem ate 7 digitos
-    && n.value <= y.value // E o valor de n for menor que y
-      ) {
-    cResult.style.color = '#888888';
-    cResult.style.backgroundColor = '#FFF';
-    cResult.style.fontSize = '38pt';
-    cResult.style.borderRadius = '0px';
-    document.getElementById( 'logo' ).innerHTML = 'Sorteando';
-
-    $( '#logo' ).removeClass( 'logo-blink addfadeIn' ).addClass( 'logo-blink' );
-    $( cResult ).removeClass( 'result-rotate' ).addClass( 'result-rotate' );
-    $( cResult ).removeClass( 'addfadeIn' );
-
-    var sort = setInterval(function() {
-      n.setAttribute( 'disabled','true' );
-      x.setAttribute( 'disabled','true' );
-      y.setAttribute( 'disabled','true' );
-      cGo.setAttribute( 'disabled','true' );
-      cGo.style.display = hide;
-      cResult.style.display = show;
-      cResult.innerHTML = Math.floor(Math.random() * ((Number(y.value) - Number(x.value)) + 1) + Number(x.value));
-
-  if ( cResult.innerHTML.length <= 5 ) {
-      cResult.style.fontSize = '38pt';
-  }
-   else if ( cResult.innerHTML.length >= 6 ) {
-      cResult.style.fontSize = '20pt';
-  }
-}, 60);
-
-
-// Resultado do sorteio
-setTimeout(function() { // Timeout de 4s
-
-if ( n.value !== '' ) { // Se o campo n NAO estiver vazio...
-      clearInterval(sort); // Remove o loop de numeros
-      $( '.new-btn, .back-to-home-btn' ).fadeIn(); // Mostra o botao 'Novo Sorteio'
-              cResult.innerHTML = arr; // Exibe os resultados
-
-              cResult.style.color = '#FFF';
-              cResult.style.backgroundColor = 'rgba(242, 255, 0, 0.5)';
-              cResult.style.borderTop = '3px solid #FFF';
-              cResult.style.borderBottom = '3px solid #FFF';
-              cResult.style.marginLeft = '-3px';
-
-              document.getElementById( 'logo' ).innerHTML = 'Resultado';
-
-      // Acrescenta um tracinho apos cada numero do resultado
-      cResult.innerHTML = cResult.innerHTML.replace(/,/g,' - ');
-
-      // Retorna a data e hora atuais
-      var now = new Date().toLocaleString(),
-      plural,
-      cCurrent = document.getElementById( 'c-current' );
-      // Plural ou singular?
-      if ( Number(n.value) > 1 ) {
-        plural = 's';
-      }
-      else if ( Number(n.value) === 1 ) {
-        plural = '';
-      }
-      else if ( Number(n.value) === 0 ) {
-        plural = 's';
-      }
-
-      // Imprime a data e hora do sorteio
-      cCurrent.innerHTML =
-      'Número'
-      +plural
-      +' gerado'
-      +plural
-      +' em '
-      + now
-      +'.<br><br>';
-
-      // Remove o efeito de fadeIn e rotacao
-      $( '#c-result' ).removeClass( 'addfadeIn result-rotate' ).addClass( 'addfadeIn' );
-      $( '#logo' ).removeClass( 'addfadeIn logo-blink' ).addClass( 'addfadeIn' );
-
-      // Aumenta ou diminui a fonte de acordo com o resultado
-      if ( cResult.innerHTML.length <= 12 ) {
-          cResult.style.fontSize = '38pt';
-      }
-       else if ( cResult.innerHTML.length >= 13 ) {
-          cResult.style.fontSize = '20pt';
-      }
-    };
-
-  }, 4000);
-  }
-    else if ( Number(n.value) >= Number(y.value) ) {
-      swal('Erro :(','asdadwdwadawdawdwdwwe.','error');
-    }
-    else {
-      swal('Erro :(','Preencha os campos de número Máximo e Mínimo corretamente.','error');
-    }
-}
-
-        // Abre o menu lateral
-        nbOpsBtn.addEventListener( 'click', function() {
-        $( '#sidebar' ).removeClass( 'close' ).addClass( 'open' );
-        document.getElementById( 'sidebar-overlay' ).style.display = show;
-        nbOpsBtn.style.display = hide;
-        nbOpsBtnClose.style.display = show;
-        });
-
-        // Fecha o menu lateral
-        document.addEventListener( 'click', function ( event ) {
-          if ( !$( event.target ).closest( '#sidebar, #navbar-ops-btn' ).length
-            || $( event.target ).closest( '.sidebar-op' ).length ) {
-              $( '#sidebar' ).removeClass( 'open' ).addClass( 'close' );
-              document.getElementById( 'sidebar-overlay' ).style.display = hide;
-              nbOpsBtnClose.style.display = hide;
-              nbOpsBtn.style.display = show;
-            }
+function sgQuit ()
+{
+  $( '#part_List, #part_List-2' )
+      .html('');
+  setTimeout( function ()
+    {
+        $( '#trophy' )
+          .remove();
+        $( '#part_List-2' )
+          .css({
+              'height':''
           });
 
-// Seleciona o conteudo de n, y e x
-$( '#n, #x, #y' ).on( 'focus', function() {
-    this.select();
-});
 
-// Altera o numero de participantes do sorteio Sortegram
-function changeNumber () {
-  sgNoPEdit.innerHTML = $( '#user-names > dt' ).size();
-  sgNoP.innerHTML = $( '#user-names > dt' ).size();
+        sgGo.style.display = show;
 
-if ( $( '#user-names > dt' ).size() === 0 ) {
-  document.getElementById( 'part-plural' ).innerHTML = 's';
-  document.getElementById( 'part-plural-2' ).innerHTML = 's';
-}
- else if ( $( '#user-names > dt' ).size() === 1 ) {
-   document.getElementById( 'part-plural' ).innerHTML = '';
-   document.getElementById( 'part-plural-2' ).innerHTML = '';
- }
-  else {
-   document.getElementById( 'part-plural' ).innerHTML = 's';
-   document.getElementById( 'part-plural-2' ).innerHTML = 's';
- }
-}
+
+        setTimeout( function ()
+          {
+              $( sgResult )
+                .css({
+                    'width'           :   '',
+                    'height'          :   '',
+                    'font-size'       :   '38pt',
+                    'border-radius'   :   '20px',
+                    'text-align'      :   '',
+                    'overflow-y'      :   'hidden'
+              })
+                .html('')
+                  .hide();
+        },100);
+
+        $( '#sg_start_Winners, #part_NumberDiv' )
+          .show();
+        $( '#sg_start_Btn, #sg-current' )
+          .hide();
+        sgCurrent.innerHTML = '';
+        sgGo.removeAttribute( 'disabled' );
+  }, 1000);
+};
+
+
+
 
 
 
 
 // SORTEGRAM
 
-function sbmt () { // Funcao que adiciona a lista o participante
-  if ( userName.value.length !== 0
-    && userName.value.match(/^@?([\w\W]){1,30}$/g)
-    ) {
-        downList();
 
-        saveBtn.disabled = false;
-        saveBtn.innerHTML = 'Salvar';
-        saveBtn.style.backgroundImage = 'url(img/appbar.save.png)';
 
-          savedNamesEdit = document.getElementById( 'user-names' ).innerHTML +=
-          '<dt><div class=\'dt-text\'>'
-          + userName.value
-          + '</div><button class=\'delete-user\'></button></dt>';
 
-          savedNames = document.getElementById( 'user-names-2' ).innerHTML = savedNamesEdit;
 
-              changeNumber();
-}
- else {
-  userName.select();
-  inputUserNameLabel.innerHTML = 'Nome de participante inválido!';
-  inputUserNameLabel.style.color = '#FFFF00';
-  $( inputUserNameLabel ).removeClass( 'error-shake' ).addClass( 'error-shake' );
 
-  setTimeout(function () {
-    inputUserNameLabel.innerHTML = 'Digite o nome do participante';
-    inputUserNameLabel.style.color = '';
-    $( inputUserNameLabel ).removeClass( 'error-shake' );
-  }, 5000);
-  }
-}
 
-$( d ).on('click','.delete-user',function () {
-      $( this ).parent().remove();
-      $( '#user-names-2' ).html( $( '#user-names' ).html() );
-      $( '#user-names-manage' ).html( $( '#user-names' ).html() );
 
-        changeNumber();
 
-        saveBtn.disabled = false;
-        saveBtn.innerHTML = 'Salvar';
-        saveBtn.style.backgroundImage = 'url(img/appbar.save.png)';
 
+
+
+
+$( '#sg_Config-winIcon-Trophy' ).on('click', function ()
+ {
+   window.localStorage.setItem('winner-icon','Trophy');
+   $( '.sg_Config-winIcon' ).removeClass( 'sg_Config-winIcon-selected' );
+   $( '#sg_Config-winIcon-Trophy' ).addClass( 'sg_Config-winIcon-selected' );
+   $( '#trophy' ).removeClass().addClass( 'sg_Config-winIcon-Trophy' );
 });
 
+$( '#sg_Config-winIcon-Heart' ).on('click', function ()
+ {
+   window.localStorage.setItem('winner-icon','Heart');
+   $( '.sg_Config-winIcon' ).removeClass( 'sg_Config-winIcon-selected' );
+   $( '#sg_Config-winIcon-Heart' ).addClass( 'sg_Config-winIcon-selected' );
+   $( '#trophy' ).removeClass().addClass( 'sg_Config-winIcon-Heart' );
+});
 
+$( '#sg_Config-winIcon-Star' ).on('click', function ()
+ {
+   window.localStorage.setItem('winner-icon','Star');
+   $( '.sg_Config-winIcon' ).removeClass( 'sg_Config-winIcon-selected' );
+   $( '#sg_Config-winIcon-Star' ).addClass( 'sg_Config-winIcon-selected' );
+   $( '#trophy' ).removeClass().addClass( 'sg_Config-winIcon-Star' );
+});
 
-// Começa o Sorteio Sortegram
-function sgStart () {
-// Cria uma array com a quantidade de numeros dada de modo que não se repitam
-var sortear = Math.floor(Math.random() * ((Number(sgNoP.innerHTML) - 1) + 1) + 1),
-    winner = sortear - 1;
-
-    isNew.checked = true;
-
-    sgResult.style.color = '#FFF';
-    sgResult.style.fontSize = '38pt';
-    document.getElementById( 'logo' ).innerHTML = 'Sorteando';
-
-    $( '#logo' ).removeClass( 'logo-blink addfadeIn' ).addClass( 'logo-blink' );
-    $( sgResult ).removeClass( 'addfadeIn' );
-
-    nbOpsBtn.disabled = true;
-
-var sort = setInterval(function() {
-      sgGo.disabled = true;
-      sgGo.style.display = hide;
-      sgResult.style.display = show;
-      sgResult.innerHTML = Math.floor(Math.random() * ((Number(sgNoP.innerHTML) - 1) + 1) + 1);
-
-
-      // Aumenta ou diminui a fonte de acordo com o resultado
-      if ( sgResult.innerHTML.length <= 5 ) {
-          sgResult.style.fontSize = '30pt';
-      }
-      else if ( sgResult.innerHTML.length <= 10 ) {
-          sgResult.style.fontSize = '20pt';
-      }
-       else if ( sgResult.innerHTML.length <= 16 ) {
-          sgResult.style.fontSize = '18pt';
-      }
-       else if ( sgResult.innerHTML.length <= 18 ) {
-          sgResult.style.fontSize = '16pt';
-      }
-        else if ( sgResult.innerHTML.length >= 19 ) {
-      sgResult.style.fontSize = '12pt';
-      }
-}, 60);
-
-  NoPdiv.style.display = hide;
-
-      // Bloqueia o scroll enquanto o sorteio é feito
-      $( '#user-names-2' ).removeClass( 'scroll' ).addClass( 'lock-scroll' );
-
-      $( '#sg-result' ).before( '<div id=\'spinner\'><\/div>' );
-      $( '#spinner' ).fadeIn();
-
-
-
-// Exibe o 'Sorteando'
-setTimeout(function() { // Timeout de 4s
-
-$( '#user-names-2' ).animate({
-  scrollTop: $( '#user-names-2 dt:nth-child(1)' ).position().top
-}, 400);
-
-      clearInterval(sort); // Remove o loop de numeros
-
-              sgResult.innerHTML = sortear; // Exibe os resultados
-
-              sgResult.style.color = '#FFF';
-              sgResult.style.backgroundColor = 'transparent';
-
-              document.getElementById( 'logo' ).innerHTML = 'Resultado';
-
-      // Retorna a data e hora atuais
-      var now = new Date().toLocaleString(),
-      plural,
-      sgCurrent = document.getElementById( 'sg-current' );
-      // Plural ou singular?
-      if ( Number(n.value) > 1 ) {
-        plural = 's';
-      }
-      else if ( Number(n.value) === 1 ) {
-        plural = '';
-      }
-      else {
-        plural = 's';
-      }
-
-
-
-          // Mostra o trofeu
-          $( '#sg-result' ).before( '<div id=\'trophy\'><\/div>' );
-          $( '#trophy' ).show( 'bounce' );
-          $( '#spinner' ).fadeOut();
-
-          nbOpsBtn.disabled = false;
-
-      // Imprime a data e hora do sorteio
-      sgCurrent.innerHTML =
-      'Sorteio feito em '
-      + now
-      +'.<br><br>';
-
-      // Remove o efeito de fadeIn e rotacao e adiciona fadeIn novamente
-      $( '#logo' ).removeClass( 'addfadeIn logo-blink' ).addClass( 'addfadeIn' );
-
-// Mostra o nome do participante que venceu
-      setTimeout(function () {
-
-        if ( sortear === 1 ) {
-          $( '#user-names-2' ).animate({
-          scrollTop: $( '#user-names-2 dt:nth-child('+sortear+')' ).position().top
-          }, 1000);
-        }
-        else {
-          $( '#user-names-2' ).animate({
-          scrollTop: $( '#user-names-2 dt:nth-child('+winner+')' ).position().top
-          }, 1000);
-        }
-
-        $( '#user-names-2 dt:nth-child('+sortear+')' ).css({
-          'background-color':'#FFF',
-          'color':'#000',
-          'border':'3px solid #F00'
-          });
-
-
-        // Permite o scroll quando o sorteio termina
-        $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
-
-          sgResult.innerHTML = sortear + ". " + $( '#user-names-2 dt:nth-child('+sortear+')' ).children().html();
-          sgResult.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-
-          $( '.new-btn, .back-to-home-btn' ).show(); // Mostra o botao 'Novo Sorteio'
-
-          $( '#sg-refresh' ).show();
-
-      // Aumenta ou diminui a fonte de acordo com o resultado
-      if ( sgResult.innerHTML.length <= 5 ) {
-          sgResult.style.fontSize = '30pt';
-      }
-      else if ( sgResult.innerHTML.length <= 10 ) {
-          sgResult.style.fontSize = '20pt';
-      }
-       else if ( sgResult.innerHTML.length <= 16 ) {
-          sgResult.style.fontSize = '18pt';
-      }
-       else if ( sgResult.innerHTML.length <= 18 ) {
-          sgResult.style.fontSize = '16pt';
-      }
-        else if ( sgResult.innerHTML.length >= 19 ) {
-      sgResult.style.fontSize = '12pt';
-      }
-    }, 2000);
-
-  }, 4000);
-};
-
-// Desabilita o botao direito (ou o toque continuo)
-$( d ).contextmenu(function() {
-  return false;
+$( '#sg_Config-winIcon-Sun' ).on('click', function ()
+ {
+   window.localStorage.setItem('winner-icon','Sun');
+   $( '.sg_Config-winIcon' ).removeClass( 'sg_Config-winIcon-selected' );
+   $( '#sg_Config-winIcon-Sun' ).addClass( 'sg_Config-winIcon-selected' );
+   $( '#trophy' ).removeClass().addClass( 'sg_Config-winIcon-Sun' );
 });
 
 
@@ -849,269 +463,168 @@ $( d ).contextmenu(function() {
 
 
 
-// Começa o Cara ou coroa
-function ccStart () {
-// Cria uma array com a quantidade de numeros dada de modo que não se repitam
-var sortearCC = Math.floor(Math.random() * ((1001 - 1) + 1) + 1);
 
-    document.getElementById( 'logo' ).innerHTML = 'Rodando';
+document.getElementById( 'sg_Config-DecCb' ).addEventListener('click', function ()
+ {
+   if ( !document.getElementById( 'sg_Config-DecCb' ).checked )
+     {
+       window.localStorage.setItem('bg-icon','');
+       $( '.sg_Config-bg' ).removeClass( 'sg_Config-bg-selected' );
 
-    $( '#logo' ).removeClass( 'logo-blink addfadeIn' ).addClass( 'logo-blink' );
+       $( '#cover, #sg_Config_Page' ).css({
+            'background-image' : '',
+            'background-size'  : '100% auto'
+       });
 
-    $( '.flipper' ).addClass( 'rotate-coin' );
-
-    nbOpsBtn.disabled = true;
-
-
-setTimeout(function() { // Timeout de 4s
-            $( '.flipper' ).removeClass( 'rotate-coin' );
-              if (sortearCC <= 500) {
-                $('.cara').css({'transform': 'rotateY(0deg)'});
-                $('.coroa').css({'transform': 'rotateY(180deg)'});
-                var resultCC = 'Cara';
-              } else {
-                $('.coroa').css({'transform': 'rotateY(0deg)'});
-                $('.cara').css({'transform': 'rotateY(180deg)'});
-                var resultCC = 'Coroa';
-              }
-
-              document.getElementById( 'logo' ).innerHTML = resultCC;
-
-              nbOpsBtn.disabled = false;
-
-
-      // Remove o efeito de fadeIn e rotacao e adiciona fadeIn novamente
-      $( '#logo' ).removeClass( 'addfadeIn logo-blink' ).addClass( 'addfadeIn' );
-
-  }, 3000);
-};
-
-
-
-// Funcao para selecionar o SC
-function cRaffle () {
-    $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
-    $( '#classic' ).removeClass( 'close' ).addClass( 'open' );
-    $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
-    $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-    $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-    $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
-
-      document.getElementById( 'logo' ).innerHTML = 'Clássico';
-}
-
-// Funcao para selecionar o CC
-function ccRaffle () {
-  $( '#h-o-t' ).removeClass( 'close' ).addClass( 'open' );
-  $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
-  $( '#sg-manage' ).addClass( 'close' ).removeClass( 'open' );
-  $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-  $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
-      document.getElementById( 'logo' ).innerHTML = 'Cara ou Coroa';
-}
-
-// Funcao para selecionar o BINGO
-function bRaffle () {
-  $( '#bingo' ).removeClass( 'close' ).addClass( 'open' );
-  $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
-  $( '#sg-manage' ).addClass( 'close' ).removeClass( 'open' );
-  $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-  $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-      document.getElementById( 'logo' ).innerHTML = 'Bingo';
-}
-
-
-// Funcao para selecionar o SS
-function sgRaffle () {
-  if ( isNew.checked === true ) { // Se NAO EXISTE jogo salvo
-    sgNew();
+       $( '#sg_Config-bgDiv' )
+          .hide( 'drop' );
   }
-  else if ( isNew.checked === false ) { // Se EXISTE jogo salvo
-    swal({
-    title: "Já existe um sorteio salvo!",
-    text: "Deseja Editar o sorteio salvo ou criar um Novo?",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#00AD2B",
-    confirmButtonText: "Novo",
-    cancelButtonText: "Editar"
-    }, function(isConfirm){
-      if (isConfirm) {
-        sgNew();
-        } else {
-          editLast();
-          }
-          });
+    else
+       {
+         $( '#sg_Config-bgDiv' )
+          .show( 'drop' );
+
+          $( '#sg_Config-bg-Flowers' )
+            .click();
+    };
+});
+
+
+
+
+document.getElementById( 'sg_Config-TipsCb' ).addEventListener('click', function ()
+ {
+   if ( document.getElementById( 'sg_Config-TipsCb' ).checked )
+     {
+       window.localStorage.setItem('highlight-tip','on');
+       hlTip();
   }
-}
-
-// Funcao para limpar a lista de participantes
-function deleteRaffle () {
-  swal({
-      title: 'Certeza?',
-      text: 'Deseja mesmo excluir esse sorteio?',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#35B138',
-      cancelButtonText: 'Não',
-      confirmButtonText: 'Sim',
-      allowOutsideClick: true,
-      closeOnConfirm: false
-    }, function() {
-          savedNames = document.getElementById( 'user-names' ).innerHTML = '';
-          document.getElementById( 'user-names-2' ).innerHTML = '';
-          sgSaveList();
-          changeNumber();
-
-          home();
-
-          sgManage.style.display = hide;
-
-          localStorage.setItem( 'is-new',true );
-          localStorage.setItem( 'saved-names-edit','' );
-
-          isNew.checked = true;
-
-      swal({
-        title: 'Pronto!',
-        text: 'Sorteio excluído.',
-        type: 'success',
-        timer: 5000,
-        allowOutsideClick: true
-      });
-
-      Reload();
-  });
-}
-
-// Remover todos sem confirmacao (atalho)
-function removeAllNoConfirm () {
-  savedNamesEdit = document.getElementById( 'user-names' ).innerHTML = '';
-  document.getElementById( 'user-names-2' ).innerHTML = '';
-  localStorage.setItem( 'saved-names-edit','' );
-      sgSaveList();
-      changeNumber();
-      sgManage.style.display = hide;
-}
+    else
+       {
+         window.localStorage.setItem('highlight-tip','off');
+         $( '.tip' )
+            .removeClass( 'animated infinite pulse glow' );
+    };
+});
 
 
-function sgSaveList () {
-  savedNamesEdit = document.getElementById( 'user-names' ).innerHTML;
-  savedNamesMng = document.getElementById( 'user-names' ).innerHTML;
-    localStorage.setItem( 'is-new',false );
-    localStorage.setItem( 'saved-names-edit',savedNamesEdit );
-}
 
-function sgSaveRaffle () {
-  if ( $( '#user-names > dt' ).size() > 0 ) {
-      sgSaveList();
-      changeNumber();
-      sgManage.style.display = show;
+$( '#sg_Config-bg-Flowers' ).on('click', function ()
+ {
+   window.localStorage.setItem('bg-icon','flowers');
+   $( '.sg_Config-bg' ).removeClass( 'sg_Config-bg-selected' );
+      $( '#sg_Config-bg-Flowers' ).addClass( 'sg_Config-bg-selected' );
 
-      saveBtn.disabled = true;
-      saveBtn.innerHTML = 'Salvo';
-      saveBtn.style.backgroundImage = 'url(img/ic_done_white_24dp_1x.png)';
+   $( '#cover, #sg_Config_Page' ).css({
+        'background-image' : 'url(img/fs-bg-flowers.png)',
+        'background-size'  : '100% auto'
+   });
+});
 
-      $( '#user-names-manage' ).html($( '#user-names' ).html());
+$( '#sg_Config-bg-Leaves' ).on('click', function ()
+ {
+   window.localStorage.setItem('bg-icon','leaves');
+   $( '.sg_Config-bg' ).removeClass( 'sg_Config-bg-selected' );
+      $( '#sg_Config-bg-Leaves' ).addClass( 'sg_Config-bg-selected' );
 
-      Reload();
-    }
-      else {
-        return false;
-      }
-}
+   $( '#cover, #sg_Config_Page' ).css({
+        'background-image' : 'url(img/fs-bg-leaves.png)',
+        'background-size'  : '100% auto'
+   });
+});
 
-function sgRaffleReady () {
-sgResult.style.backgroundColor = 'transparent';
-$( '#sg-refresh' ).hide();
-  if ( isNew.checked
-    && $( '#user-names > dt' ).size() > 1
-    ) {
-        $( '#user-names-2' ).html($( '#user-names' ).html());
+$( '#sg_Config-bg-Ducks' ).on('click', function ()
+ {
+   window.localStorage.setItem('bg-icon','ducks');
+   $( '.sg_Config-bg' ).removeClass( 'sg_Config-bg-selected' );
+      $( '#sg_Config-bg-Ducks' ).addClass( 'sg_Config-bg-selected' );
 
-        $( '#start-sortegram' ).removeClass( 'close' ).addClass( 'open' );
-        $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-        $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
+   $( '#cover, #sg_Config_Page' ).css({
+        'background-image' : 'url(img/fs-bg-ducks.png)',
+        'background-size'  : '100% auto'
+   });
+});
 
-        $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
+$( '#sg_Config-bg-Bfs' ).on('click', function ()
+ {
+   window.localStorage.setItem('bg-icon','bfs');
+   $( '.sg_Config-bg' ).removeClass( 'sg_Config-bg-selected' );
+      $( '#sg_Config-bg-Bfs' ).addClass( 'sg_Config-bg-selected' );
 
-        document.getElementById( 'logo' ).innerHTML = 'Sortegram';
-
-        $('#user-names-2 .delete-user').hide();
-    }
-
-  else if (  !isNew.checked
-          && $( '#user-names > dt' ).size() > 1
-          ) {
-
-          $( '#user-names-2' ).html($( '#user-names' ).html());
-
-          $( '#start-sortegram' ).removeClass( 'close' ).addClass( 'open' );
-          $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
-          $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
-          $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-          $( '#sg-about' ).removeClass( 'open' ).addClass( 'close' );
-
-          $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
-
-          document.getElementById( 'logo' ).innerHTML = 'Sortegram';
-
-          $('#user-names-2 .delete-user').hide();
-    }
-  else {
-      swal({
-        title: 'Erro :(',
-        text: 'O sorteio precisa ter pelo menos 2 participantes!',
-        type: 'error',
-        timer: 10000,
-        allowOutsideClick: true
-      });
-  }
-  Reload();
-}
+   $( '#cover, #sg_Config_Page' ).css({
+        'background-image' : 'url(img/fs-bg-bfs.png)',
+        'background-size'  : '100% auto'
+   });
+});
 
 
-function sgRaffleRefresh () {
 
+
+
+
+
+
+
+function sg_Repeat ()
+ {
+  hlTip(5000);
+
+  // Esconde o trofeu
+    $( '#trophy' )
+      .remove();
+
+
+  $( '#sg_start_Btn, .new-btn, .back-to-home-btn, #part_List-2 .delete-user' )
+    .hide();
+  $( '#sg_start_Winners' )
+    .show();
+
+  sgCurrent.style.display = hide;
+  part_NumberDiv.style.display = show;
   sgGo.style.display = show;
-  sgResult.style.display = hide;
-  $( '.new-btn, .back-to-home-btn' ).hide();
+
   sgCurrent.innerHTML = '';
   sgGo.removeAttribute( 'disabled' );
 
-      // Esconde o trofeu
-    $( '#trophy' ).hide();
-
-    $( '#sg-refresh' ).hide();
-
-    NoPdiv.style.display = show;
-
-        $( '.new-btn, .back-to-home-btn' ).hide(); // Esconde o botao 'Novo Sorteio'
+  $('#part_List-2')
+    .css({
+      'height' : ''
+  });
 
 
+  $('#part_List-2 dt')
+    .css({
+        'background-color'  :   '',
+        'color'             :   '',
+        'border'            :   ''
+  });
 
 
-  sgResult.style.backgroundColor = 'transparent';
+        $( '#part_List-2' )
+          .removeClass( 'lock-scroll' )
+            .addClass( 'scroll' );
 
-        $( '#user-names-2' ).removeClass( 'lock-scroll' ).addClass( 'scroll' );
+        status('Re-sorteio');
 
-        document.getElementById( 'logo' ).innerHTML = 'Re-sorteio';
 
-        $('#user-names-2 .delete-user').hide();
 
-        $('#user-names-2 dt').css({
-          "background-color": "",
-          "color":"",
-          "border":""
-          });
-
-  $( '#sg-refresh' ).hide();
+    setTimeout( function ()
+      {
+          $( sgResult )
+            .css({
+                'width'           :   '',
+                'height'          :   '',
+                'text-align'      :   '',
+                'overflow-y'      :   'hidden',
+                'font-size'       :   '38pt',
+                'border-radius'   :   '20px'
+          })
+            .html('')
+              .hide();
+    },0);
 
   Reload();
-}
+};
 
 
 
@@ -1119,232 +632,63 @@ function sgRaffleRefresh () {
 
 
 
+function hlTip (timeout)
+  {
+      $( '.tip' )
+        .removeClass( 'animated infinite pulse glow' );
 
-$( '.ui-color-picker .ui-color' ).on( 'click', function () {
-    $( '.ui-color' ).css( 'border','' );
-    $( this ).css( 'border','2px solid #000000' );
-
-if ( !isLight.checked ) { // If is not dark
-    if ( $( this ).hasClass( 'verde' ) ) {
-      $bg_uiColor.css( 'background-color', greenLight[0] );
-      $btn_uiColor.css( 'background-color', greenLight[1] );
-      $fnt_uiColor.css( 'color', greenLight[2] );
-      $bd_fntColor.css( 'color',greenLight[3] );
-      localStorage.setItem( 'ui-color','green' );
-    }
-     else if ( $( this ).hasClass( 'azul' ) ) {
-      $bg_uiColor.css( 'background-color', blueLight[0] );
-      $btn_uiColor.css( 'background-color', blueLight[1] );
-      $fnt_uiColor.css( 'color', blueLight[2] );
-      $bd_fntColor.css( 'color',blueLight[3] );
-      localStorage.setItem( 'ui-color','blue' );
-    }
-     else if ( $( this ).hasClass( 'vermelho' ) ) {
-      $bg_uiColor.css( 'background-color', redLight[0] );
-      $btn_uiColor.css( 'background-color', redLight[1] );
-      $fnt_uiColor.css( 'color', redLight[2] );
-      $bd_fntColor.css( 'color',redLight[3] );
-      localStorage.setItem( 'ui-color','red' );
-    }
-     else if ( $( this ).hasClass( 'amarelo' ) ) {
-      $bg_uiColor.css( 'background-color', yellowLight[0] );
-      $btn_uiColor.css( 'background-color', yellowLight[1] );
-      $fnt_uiColor.css( 'color', yellowLight[2] );
-      $bd_fntColor.css( 'color',yellowLight[3] );
-      localStorage.setItem( 'ui-color','yellow' );
-    }
-     else if ( $( this ).hasClass( 'laranja' ) ) {
-      $bg_uiColor.css( 'background-color', orangeLight[0] );
-      $btn_uiColor.css( 'background-color', orangeLight[1] );
-      $fnt_uiColor.css( 'color', orangeLight[2] );
-      $bd_fntColor.css( 'color',orangeLight[3] );
-      localStorage.setItem( 'ui-color','orange' );
-    }
-     else if ( $( this ).hasClass( 'rosa' ) ) {
-      $bg_uiColor.css( 'background-color', pinkLight[0] );
-      $btn_uiColor.css( 'background-color', pinkLight[1] );
-      $fnt_uiColor.css( 'color', pinkLight[2] );
-      $bd_fntColor.css( 'color',pinkLight[3] );
-      localStorage.setItem( 'ui-color','pink' );
-    }
-     else if ( $( this ).hasClass( 'lilas' ) ) {
-      $bg_uiColor.css( 'background-color', lilacLight[0] );
-      $btn_uiColor.css( 'background-color', lilacLight[1] );
-      $fnt_uiColor.css( 'color', lilacLight[2] );
-      $bd_fntColor.css( 'color',lilacLight[3] );
-      localStorage.setItem( 'ui-color','lilac' );
-    }
-     else if ( $( this ).hasClass( 'ciano' ) ) {
-      $bg_uiColor.css( 'background-color', cyanLight[0] );
-      $btn_uiColor.css( 'background-color', cyanLight[1] );
-      $fnt_uiColor.css( 'color', cyanLight[2] );
-      $bd_fntColor.css( 'color',cyanLight[3] );
-      localStorage.setItem( 'ui-color','cyan' );
-    }
-     else if ( $( this ).hasClass( 'violeta' ) ) {
-      $bg_uiColor.css( 'background-color', violetLight[0] );
-      $btn_uiColor.css( 'background-color', violetLight[1] );
-      $fnt_uiColor.css( 'color', violetLight[2] );
-      $bd_fntColor.css( 'color',violetLight[3] );
-      localStorage.setItem( 'ui-color','violet' );
-    }
-  }
-    else { // If is dark
-      if ( $( this ).hasClass( 'verde' ) ) {
-      $bg_uiColor.css( 'background-color', green[0] );
-      $btn_uiColor.css( 'background-color', green[1] );
-      $fnt_uiColor.css( 'color', green[2] );
-      $bd_fntColor.css( 'color',green[3] );
-      localStorage.setItem( 'ui-color','green' );
-    }
-     else if ( $( this ).hasClass( 'azul' ) ) {
-      $bg_uiColor.css( 'background-color', blue[0] );
-      $btn_uiColor.css( 'background-color', blue[1] );
-      $fnt_uiColor.css( 'color', blue[2] );
-      $bd_fntColor.css( 'color',blue[3] );
-      localStorage.setItem( 'ui-color','blue' );
-    }
-     else if ( $( this ).hasClass( 'vermelho' ) ) {
-      $bg_uiColor.css( 'background-color', red[0] );
-      $btn_uiColor.css( 'background-color', red[1] );
-      $fnt_uiColor.css( 'color', red[2] );
-      $bd_fntColor.css( 'color',red[3] );
-      localStorage.setItem( 'ui-color','red' );
-    }
-     else if ( $( this ).hasClass( 'amarelo' ) ) {
-      $bg_uiColor.css( 'background-color', yellow[0] );
-      $btn_uiColor.css( 'background-color', yellow[1] );
-      $fnt_uiColor.css( 'color', yellow[2] );
-      $bd_fntColor.css( 'color',yellow[3] );
-      localStorage.setItem( 'ui-color','yellow' );
-    }
-     else if ( $( this ).hasClass( 'laranja' ) ) {
-      $bg_uiColor.css( 'background-color', orange[0] );
-      $btn_uiColor.css( 'background-color', orange[1] );
-      $fnt_uiColor.css( 'color', orange[2] );
-      $bd_fntColor.css( 'color',orange[3] );
-      localStorage.setItem( 'ui-color','orange' );
-    }
-     else if ( $( this ).hasClass( 'rosa' ) ) {
-      $bg_uiColor.css( 'background-color', pink[0] );
-      $btn_uiColor.css( 'background-color', pink[1] );
-      $fnt_uiColor.css( 'color', pink[2] );
-      $bd_fntColor.css( 'color',pink[3] );
-      localStorage.setItem( 'ui-color','pink' );
-    }
-     else if ( $( this ).hasClass( 'lilas' ) ) {
-      $bg_uiColor.css( 'background-color', lilac[0] );
-      $btn_uiColor.css( 'background-color', lilac[1] );
-      $fnt_uiColor.css( 'color', lilac[2] );
-      $bd_fntColor.css( 'color',lilac[3] );
-      localStorage.setItem( 'ui-color','lilac' );
-    }
-     else if ( $( this ).hasClass( 'ciano' ) ) {
-      $bg_uiColor.css( 'background-color', cyan[0] );
-      $btn_uiColor.css( 'background-color', cyan[1] );
-      $fnt_uiColor.css( 'color', cyan[2] );
-      $bd_fntColor.css( 'color',cyan[3] );
-      localStorage.setItem( 'ui-color','cyan' );
-    }
-     else if ( $( this ).hasClass( 'violeta' ) ) {
-      $bg_uiColor.css( 'background-color', violet[0] );
-      $btn_uiColor.css( 'background-color', violet[1] );
-      $fnt_uiColor.css( 'color', violet[2] );
-      $bd_fntColor.css( 'color',violet[3] );
-      localStorage.setItem( 'ui-color','violet' );
-    }
-    }
-
-
-    swal({
-        title: 'Pronto!',
-        text: 'Salvando alterações...',
-        type: 'success',
-        showConfirmButton: false,
-        timer: 2000
-      });
-});
-
-
-
-
-x.oninput = function () {
-    document.getElementById( 'x' ).setAttribute( 'max', y.value - 2 );
-}
-
-n.onchange = function () {
-    if ( Number(n.value) >= Number(y.value)
-      || Number(n.value) > Number(y.value) - x.value )
-      { n.value = y.value - x.value;
-      }
-    if ( Number(x.value) > Number(y.value) ) {
-      x.value = y.value - 2;
-    }
-    if ( Number(n.value) === 0 ) {
-      n.value = 1;
-      document.getElementById( 'numb-plural' ).innerHTML = '';
-    }
-    if ( Number(n.value) > 100 ) {
-      n.value = 100;
-      document.getElementById( 'numb-plural' ).innerHTML = 's';
-    }
-}
-
-x.onchange = function () {
-    if ( Number(x.value) >= Number(y.value) ) {
-      x.value = y.value - 2;
-    }
-    if ( Number(n.value) >= Number(y.value)
-      || Number(n.value) > Number(y.value) - x.value ) {
-      n.value = y.value - x.value;
-    }
-}
-
-y.onchange = function () {
-    if ( Number(y.value) <= Number(x.value) ) {
-      y.value = Number(x.value) + 2;
-    }
-    if ( Number(n.value) >= Number(y.value)
-      || Number(n.value) > Number(y.value) - x.value ) {
-      n.value = y.value - x.value;
-    }
-}
-
-n.oninput = function () {
-    if ( this.value.length > 3 ) {
-        this.value = this.value.slice( 0,3 );
-    }
-
-document.getElementById( 'n' ).setAttribute( 'max', y.value - x.value - 1 );
-
-if ( Number(n.value) > 1 ) {
-  document.getElementById( 'numb-plural' ).innerHTML = 's';
-}
-else if ( Number(n.value) === 1 ) {
-  document.getElementById( 'numb-plural' ).innerHTML = '';
-}
-else if ( Number(n.value) === 0 ) {
-  document.getElementById( 'numb-plural' ).innerHTML = 's';
-}
-}
-
-x.oninput = function () {
-    if ( this.value.length > 7 ) {
-        this.value = this.value.slice( 0,7 );
+        if ( document.getElementById( 'sg_Config-TipsCb' ).checked )
+          {
+            setTimeout(function ()
+              {
+                $( '.tip' )
+                  .addClass( 'animated infinite pulse glow' );
+            }, timeout);
         }
-}
+          else
+             {
+               setTimeout(function ()
+                 {
+                   $( '.tip' )
+                    .removeClass( 'animated infinite pulse glow' );
+                }, timeout);
+          };
 
-y.oninput = function () {
-    if ( this.value.length > 7 ) {
-        this.value = this.value.slice( 0,7 );
-        }
-}
+};
 
-userName.oninput = function () {
-    if ( this.value.length > 30 ) {
-        this.value = this.value.slice( 0,30 );
-        }
-}
+
+
+
+
+
+        // Abre o menu lateral
+        nbOpsBtn.addEventListener( 'click', function ()
+         {
+            $( '#sidebar' )
+              .removeClass( 'close' )
+                .addClass( 'open' );
+            document.getElementById( 'sidebar-overlay' ).style.display = show;
+            nbOpsBtn.style.display = hide;
+            nbOpsBtnClose.style.display = show;
+        });
+
+        // Fecha o menu lateral
+        document.addEventListener( 'click', function ( event )
+         {
+          if ( !$( event.target ).closest( '#sidebar, #navbar-ops-btn' ).length
+            || $( event.target ).closest( '.sidebar-op' ).length )
+             {
+                $( '#sidebar' )
+                  .removeClass( 'open' )
+                    .addClass( 'close' );
+                document.getElementById( 'sidebar-overlay' ).style.display = hide;
+                nbOpsBtnClose.style.display = hide;
+                nbOpsBtn.style.display = show;
+            }
+          });
+
+
+
 
 
 
@@ -1355,7 +699,7 @@ function Reload () {
   var _s = document.createElement( 'script' );
   _s.id = 'script';
   _s.src = 'js/sortegram.dev.js';
-  document.body.appendChild( _s );
+  document.getElementById('scrptLoad').appendChild( _s );
 };
 
 
@@ -1364,48 +708,39 @@ function Reload () {
 
 // Sobre o Sortegram
 
-document.getElementById('sg-about-text').innerHTML =
+document.getElementById('sg_aboutText').innerHTML =
 '<h2>Sortegram</h2>\
 Autor: <b>Victor Ribeiro</b><br>\
-Versão: <b>v1.3.0</b><br>\
-Website: <b><a href=\"#\" onclick=\"window.open(\'http:\/\/sortegram.com\/\', \'_system\');\">http:\/\/sortegram.com\/<\/a></b><br>\
+Versão: <b>v2.0.0</b><br>\
+Website: <b><a href="http://sortegram.com" target="_blank">//sortegram.com</a></b><br>\
 <br>\
 O <b>Sortegram</b> é um pequeno aplicativo que você pode usar para sortear \
-pessoas, números e muitas outras coisas que você precisar. Basta adicionar os participantes e sorteá-los.<br><br>\
-Você pode ainda salvar a lista de participantes para continuar em outro momento. \
-Essa opção é útil para quem tem uma lista imensa de participantes e quer ir adicionando aos poucos.<br><br>\
-Para quem quer apenas sortear números aleatórios, o <b>Sortegram</b> conta também com o <b>Sorteio Clássico</b>. \
-Nele você pode sortear um ou vários números, de modo que nenhum deles se repita.<br><br>\
-O aplicativo conta ainda com o modo <b>Cara ou Coroa</b>, em que você não precisa \
-de uma moeda de verdade para jogar. Basta entrar no modo (apertando no ícone do meio da tela inicial) e tocar na moeda. \
-Os resultados são completamente aleatórios e você não precisa se preocupar com trapaças.<br><br>\
+pessoas, números e muitas outras coisas que você precisar.<br><br>\
+Melhorias na versão 2.0.0\
+<ul><li>Adicionada a funcionalidade de adicionar até 10 sorteios individuais;</li>\
+<li>Melhoria nas cores</li>\
+<li>Consertado o bug no Claro/Escuro onde você tinha que selecionar novamente;</li>\
+  a cor ou reiniciar o app;</li>\
+<li>Melhoria no desempenho para sorteios com mais de 1000 participantes;</li>\
+<li>Adicionado o ativar/desativar arroba (@) na página de edição.\
+  <br>Essencial para validação de usernames de Instagram e Twitter;</li>\
+<li>Agora você pode escolher entre sortear um ganhador ou vários.\
+  <br>O número maximo de ganhadores é igual ao número de participantes e o minimo 2;</li>\
+<li>Adicionadas novas animações;</li>\
+<li>Repaginação da interface;</li>\
+<li>Adicionado menu de configurações gerais;</li>\
+<li>Changelog adicionado ao menu Configurações;</li></ul><br><br>\
 Se você tem alguma dúvida de como utilizar o aplicativo, ou apenas quer dar seu feedback, \
-elogiando ou dizendo em que o aplicativo pode melhorar, mande um email para o desenvolvedor em <a href=\'mailto:victor_ribeiro135@hotmail.com?subject=Feedback Sortegram\'>victor_ribeiro135@hotmail.com</a>. ;)\
+elogiando ou dizendo em que o aplicativo pode melhorar, mande um email para o desenvolvedor em <b><a href="mailto:victor_ribeiro135@hotmail.com?subject=Feedback Sortegram">victor_ribeiro135@hotmail.com</a></b>. ;)\
 ';
 
-function About () {
-  cResult.style.color = '#FFF';
-  cResult.style.backgroundColor = 'rgba(236, 248, 255, 0.5)';
-  cResult.style.borderTop = '3px solid #FFF';
-  cResult.style.borderBottom = '3px solid #FFF';
-      $( '#sg-about' ).removeClass( 'close' ).addClass( 'open' );
-      $( '#sg-manage' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#home' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#classic' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#start-sortegram' ).removeClass( 'open' ).addClass( 'close' );
-      $( '#h-o-t' ).removeClass( 'open' ).addClass( 'close' );
-  document.getElementById( 'logo' ).innerHTML = 'Sobre';
-  $( '#user-names-manage .delete-user' ).hide();
-  sgQuit();
-  cNew();
-}
+
 
 
 
 
 // Listen for orientation changes
-window.addEventListener("orientationchange", function() {
+window.addEventListener('orientationchange', function() {
   // Announce the new orientation number
   if ( window.orientation === 90 ) {
     $('.splash-orientation').show();
@@ -1419,21 +754,3 @@ window.addEventListener("orientationchange", function() {
     $('.splash-orientation').hide();
   }
 }, false);
-
-/* Shake event (only testing)
-var myShakeEvent = new Shake({
-    threshold: 15, // optional shake strength threshold
-    timeout: 1000 // optional, determines the frequency of event generation
-});
-
-myShakeEvent.start();
-
-window.addEventListener('shake', shakeEventDidOccur, false);
-
-//function to call when shake occurs
-function shakeEventDidOccur () {
-    scStart();
-    sgStart();
-    ccStart();
-}
-*/

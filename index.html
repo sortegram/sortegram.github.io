@@ -18,8 +18,8 @@
 		<link href="css/jquery.fancybox.css" rel="stylesheet">
 		<link href="css/flickity.css" rel="stylesheet" >
 		<link href="css/animate.css" rel="stylesheet">
-		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+		<link href="fonts/font-awesome.min.css" rel="stylesheet">
+		<link href='fonts/Nunito.css' rel='stylesheet' type='text/css'>
 		<link href="css/styles.css" rel="stylesheet">
 		<link href="css/queries.css" rel="stylesheet">
 
@@ -70,7 +70,7 @@
 					<div class="row hero-content">
 						<div class="col-md-12">
 							<h1 class="animated fadeInDown">Um sorteador simples, mas que faz muito.</h1>
-							<a href="/app.html" class="learn-btn animated fadeInUp">Abrir o Sortegram</a> <a href="#download" class="learn-btn animated fadeInUp">Baixar o apk<i class="fa fa-arrow-down"></i></a> <a href="#xJs6" class="learn-btn animated fadeInUp">Saiba mais</a>
+							<a onclick="window.open('client.htm','app','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=475, height=675, top=50, left=400');" class="learn-btn animated fadeInUp">Abrir o Sortegram</a> <a onclick="window.open('download/app.apk');" class="learn-btn animated fadeInUp">Baixar o apk<i class="fa fa-arrow-down"></i></a> <a href="#xJs6" class="learn-btn animated fadeInUp">Saiba mais</a>
 						</div>
 					</div>
 				</div>
@@ -233,7 +233,7 @@
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="js/min/toucheffects-min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<script src="js/flickity.pkgd.min.js"></script>
 		<script src="js/jquery.fancybox.pack.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -246,7 +246,7 @@
 		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
 		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
 		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-		e.src='//www.google-analytics.com/analytics.js';
+		e.src='https://www.google-analytics.com/analytics.js';
 		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 		ga('create','UA-XXXXX-X');ga('send','pageview');
 		</script>
