@@ -925,11 +925,6 @@ input[class="sg_Config-Cb"]:focus + label:before {
   height: -ms-calc(100% - 50px);
   height: -o-calc(100% - 50px);
   top: 50px;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   overflow-y: auto;
   z-index: 0;
 }
