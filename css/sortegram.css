@@ -521,35 +521,43 @@ input[class="sg_Config-Cb"]:focus + label:before {
 
 
 .open {
-  animation-name: openmenu;
+  animation-name: open;
   animation-duration: .3s;
   animation-fill-mode: forwards;
 }
 
 .close {
-  animation-name: closemenu;
+  animation-name: close;
   animation-duration: .3s;
   animation-fill-mode: forwards;
 }
 
-@keyframes openmenu {
+@keyframes open {
   from {
-    left: -110%;
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(.5);
     opacity: 0;
   }
   100% {
-    left: 0%;
+    transform: scale(1);
     opacity: 1;
   }
 }
 
-@-webkit-keyframes openmenu {
+@-webkit-keyframes open {
   from {
-    left: -110%;
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(.5);
     opacity: 0;
   }
   100% {
-    left: 0%;
+    -webkit-transform: scale(1);
     opacity: 1;
   }
 }
