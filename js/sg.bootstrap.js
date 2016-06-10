@@ -4,7 +4,7 @@
 // Funcoes a serem carregadas na inicializacao
 function appLoad ()
  {
-   console.log('Parece que você gosta de ver como as coisas funcionam por dentro. \nQue tal se juntar à equipe de desenvolvimento do Sortegram?\n http://sortegram.com/join');
+   console.log('Parece que você gosta de ver como as coisas funcionam por dentro. \nQue tal contribuir com o desenvolvimento do Sortegram? :D\n http://github.com/sortegram/sortegram');
 
 
 
