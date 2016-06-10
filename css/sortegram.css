@@ -538,14 +538,58 @@ input[class="sg_Config-Cb"]:focus + label:before {
     opacity: 0;
   }
   100% {
-    left: 0;
+    left: 0%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes openmenu {
+  from {
+    left: -110%;
+    opacity: 0;
+  }
+  100% {
+    left: 0%;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes openmenu {
+  from {
+    left: -110%;
+    opacity: 0;
+  }
+  100% {
+    left: 0%;
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes openmenu {
+  from {
+    left: -110%;
+    opacity: 0;
+  }
+  100% {
+    left: 0%;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes openmenu {
+  from {
+    left: -110%;
+    opacity: 0;
+  }
+  100% {
+    left: 0%;
     opacity: 1;
   }
 }
 
 @keyframes closemenu {
   from {
-    left: 0;
+    left: 0%;
     opacity: 1;
   }
   100% {
@@ -553,6 +597,18 @@ input[class="sg_Config-Cb"]:focus + label:before {
     opacity: 0;
   }
 }
+
+@keyframes closemenu {
+  from {
+    left: 0%;
+    opacity: 1;
+  }
+  100% {
+    left: -110%;
+    opacity: 0;
+  }
+}
+
 
 
 .home-icon {
