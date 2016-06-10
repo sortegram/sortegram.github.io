@@ -559,14 +559,41 @@ input[class="sg_Config-Cb"]:focus + label:before {
    cursor: pointer;
 }
 
+
 .open {
-  left: 0;
-  opacity: 1;
+  animation-name: open-menu;
+  animation-duration: .3s;
+  animation-iteration-count: 1;
 }
+
 .close {
-  left: -110%;
-  opacity: 0;
+  animation-name: close-menu;
+  animation-duration: .3s;
+  animation-iteration-count: 1;
 }
+
+@keyframes open-menu {
+  from {
+    left: -110%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes close-menu {
+  from {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -110%;
+    opacity: 0;
+  }
+}
+
 
 .home-icon {
   cursor: pointer;
