@@ -597,55 +597,45 @@ input[class="sg_Config-Cb"]:focus + label:before {
 
 @keyframes close {
   from {
-    left: 0%;
     opacity: 1;
   }
   100% {
-    left: -110%;
     opacity: 0;
   }
 }
 
 @-webkit-keyframes close {
   from {
-    left: 0%;
     opacity: 1;
   }
   100% {
-    left: -110%;
     opacity: 0;
   }
 }
 
 @-moz-keyframes close {
   from {
-    left: 0%;
     opacity: 1;
   }
   100% {
-    left: -110%;
     opacity: 0;
   }
 }
 
 @-ms-keyframes close {
   from {
-    left: 0%;
     opacity: 1;
   }
   100% {
-    left: -110%;
     opacity: 0;
   }
 }
 
 @-o-keyframes close {
   from {
-    left: 0%;
     opacity: 1;
   }
   100% {
-    left: -110%;
     opacity: 0;
   }
 }
