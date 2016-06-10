@@ -597,45 +597,75 @@ input[class="sg_Config-Cb"]:focus + label:before {
 
 @keyframes close {
   from {
+    transform: scale(1);
     opacity: 1;
   }
+  50% {
+    transform: scale(.5);
+    opacity: 0;
+  }
   100% {
+    transform: scale(0);
     opacity: 0;
   }
 }
 
 @-webkit-keyframes close {
   from {
+    -webkit-transform: scale(1);
     opacity: 1;
   }
+  50% {
+    -webkit-transform: scale(.5);
+    opacity: 0;
+  }
   100% {
+    -webkit-transform: scale(0);
     opacity: 0;
   }
 }
 
 @-moz-keyframes close {
   from {
+    -moz-transform: scale(1);
     opacity: 1;
   }
+  50% {
+    -moz-transform: scale(.5);
+    opacity: 0;
+  }
   100% {
+    -moz-transform: scale(0);
     opacity: 0;
   }
 }
 
 @-ms-keyframes close {
   from {
+    -ms-transform: scale(1);
     opacity: 1;
   }
+  50% {
+    -ms-transform: scale(.5);
+    opacity: 0;
+  }
   100% {
+    -ms-transform: scale(0);
     opacity: 0;
   }
 }
 
 @-o-keyframes close {
   from {
+    -o-transform: scale(1);
     opacity: 1;
   }
+  50% {
+    -o-transform: scale(.5);
+    opacity: 0;
+  }
   100% {
+    -o-transform: scale(0);
     opacity: 0;
   }
 }
