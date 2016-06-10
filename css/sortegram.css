@@ -562,7 +562,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@-moz-keyframes openmenu {
+@-moz-keyframes open {
   from {
     left: -110%;
     opacity: 0;
@@ -573,7 +573,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@-ms-keyframes openmenu {
+@-ms-keyframes open {
   from {
     left: -110%;
     opacity: 0;
@@ -584,7 +584,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@-o-keyframes openmenu {
+@-o-keyframes open {
   from {
     left: -110%;
     opacity: 0;
@@ -595,7 +595,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@keyframes closemenu {
+@keyframes close {
   from {
     left: 0%;
     opacity: 1;
@@ -606,7 +606,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@-webkit-keyframes closemenu {
+@-webkit-keyframes close {
   from {
     left: 0%;
     opacity: 1;
@@ -617,7 +617,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@-moz-keyframes closemenu {
+@-moz-keyframes close {
   from {
     left: 0%;
     opacity: 1;
@@ -628,7 +628,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@-ms-keyframes closemenu {
+@-ms-keyframes close {
   from {
     left: 0%;
     opacity: 1;
@@ -639,7 +639,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@-o-keyframes closemenu {
+@-o-keyframes close {
   from {
     left: 0%;
     opacity: 1;
