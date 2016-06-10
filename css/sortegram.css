@@ -34,11 +34,6 @@
   max-width: 100%;
   text-align: center;
   position: fixed;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   z-index: -1;
 }
 
@@ -49,11 +44,6 @@
   max-width: 100%;
   text-align: center;
   position: fixed;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   z-index: -1;
 }
 
@@ -69,11 +59,6 @@
   min-height: -o-calc(100% - 70px);
   text-align: center;
   position: fixed;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   top: 0;
   margin-left: 0px;
   padding: 0px;
@@ -93,11 +78,6 @@
   min-height: 100%;
   text-align: center;
   position: fixed;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   top: 0;
   z-index: -3;
 }
@@ -122,11 +102,6 @@
   top: 0;
   padding: 1px;
   padding-top: 55px;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   overflow-y: auto;
   z-index: -3;
 }
@@ -151,11 +126,6 @@
   top: 0;
   padding: 1px;
   padding-top: 55px;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   overflow-y: auto;
   z-index: -3;
 }
@@ -173,11 +143,6 @@
   padding: 1px;
   padding-top: 60px;
   padding-bottom: 30px;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   overflow-y: auto;
   z-index: 0;
 }
@@ -198,11 +163,6 @@ background-color: transparent;
   margin-left: 0px;
   padding: 0px;
   padding-top: 55px;
-  transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -moz-transition: .5s ease;
-  -ms-transition: .5s ease;
-  -o-transition: .5s ease;
   z-index: -3;
 }
 
