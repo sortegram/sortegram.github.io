@@ -561,18 +561,16 @@ input[class="sg_Config-Cb"]:focus + label:before {
 
 
 .open {
-  animation-name: open-menu;
+  animation-name: openmenu;
   animation-duration: .3s;
-  animation-iteration-count: 1;
 }
 
 .close {
-  animation-name: close-menu;
+  animation-name: closemenu;
   animation-duration: .3s;
-  animation-iteration-count: 1;
 }
 
-@keyframes open-menu {
+@keyframes openmenu {
   from {
     left: -110%;
     opacity: 0;
@@ -583,7 +581,7 @@ input[class="sg_Config-Cb"]:focus + label:before {
   }
 }
 
-@keyframes close-menu {
+@keyframes closemenu {
   from {
     left: 0;
     opacity: 1;
