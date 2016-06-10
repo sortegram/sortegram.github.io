@@ -522,13 +522,13 @@ input[class="sg_Config-Cb"]:focus + label:before {
 
 .open {
   animation-name: openmenu;
-  animation-duration: .3s;
+  animation-duration: .5s;
   animation-fill-mode: forwards;
 }
 
 .close {
   animation-name: closemenu;
-  animation-duration: .3s;
+  animation-duration: .5s;
   animation-fill-mode: forwards;
 }
 
