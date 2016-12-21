@@ -2669,22 +2669,7 @@ function sg_Start ()
           
 
           
-          if ( sgResult.match( '@' ) )
-          {
-                var str = sgResult;
-                var res = str.replace("@", "");
-              
-                $.ajax({
-                  dataType: "json",
-                  url: 'https://www.instagram.com/' + res + '/?__a=1',
-                  data: data,
-                  success: function (data) {
-                    $( '#trophy' ).css({
-                        'background-image':'url(' + data.user.profile_pic_url + ')'
-                    });
-                  }
-                });
-          }
+       
 
                     for ( i = 0; i <= (j-1); i++ )
                        {
@@ -2698,6 +2683,26 @@ function sg_Start ()
                     $( '#trophy' )
                       .fadeIn()
                         .addClass( 'sg_Config-winIcon-' + localStorage.getItem('winner-icon') );
+          
+          
+          if ( sgResult.match( '@' ) )
+          {
+                var str = sgResult;
+                var res = str.replace("@", "");
+              
+                $.ajax({
+                  dataType: "json",
+                  url: 'https://www.instagram.com/' + res + '/?__a=1',
+                  data: data,
+                  success: function (data) {
+                    $( '#trophy' ).css({
+                        'background-image':'url(' + data.user.profile_pic_url + ')'
+                    });
+                      
+                    console.log(data.user.profile_pic_url);
+                  }
+                });
+          }
 
                     // Esconde o loader
                     $( '#spinner' )
