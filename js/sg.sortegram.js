@@ -13,7 +13,7 @@ var svdItemCheck1 = document.getElementById( 'saved_item-check-1' ), svdItemChec
     svdItemFakeCheckbox9 = document.getElementById( 'saved_item-cb-9' ), svdItemFakeCheckbox10 = document.getElementById( 'saved_item-cb-10' );
 
 
-console.log('V3.0.7');
+console.log('V3.0.8');
 
 // Altera o numero de participantes do sorteio Sortegram
 function changeNumber ()
@@ -2439,27 +2439,7 @@ function sg_Start ()
           
           
           
-          ////////////////////////////////////
-          if ( /(\@)/.test(sgResult.innerHTML) )
-          {
-              console.log('result: 1');
-                var str = sgResult;
-                var res = str.replace("@", "");
-              
-                $.ajax({
-                  dataType: "json",
-                  url: 'https://www.instagram.com/' + res + '/?__a=1',
-                  data: data,
-                  success: function (data) {
-                    $( '#trophy' ).css({
-                        'background-image':'url(' + data.user.profile_pic_url + ')'
-                    });
-                      
-                    console.log(data.user.profile_pic_url);
-                  }
-                });
-          }
-          else {console.log('fail result: 1');}
+          
 
                     // Esconde o loader
                     $( '#spinner' ).fadeOut();
@@ -2527,6 +2507,30 @@ function sg_Start ()
 
                     $( '#sg_start_Btn' )
                       .show(); // Mostra os botoes 'Novo Sorteio' e 'Inicio'
+                    
+                    
+                    
+         ////////////////////////////////////
+          if ( /(\@)/.test(sgResult.innerHTML) )
+          {
+              console.log('result: 1');
+                var str = sgResult;
+                var res = str.replace("@", "");
+              
+                $.ajax({
+                  dataType: "json",
+                  url: 'https://www.instagram.com/' + res + '/?__a=1',
+                  data: data,
+                  success: function (data) {
+                    $( '#trophy' ).css({
+                        'background-image':'url(' + data.user.profile_pic_url + ')'
+                    });
+                      
+                    console.log(data.user.profile_pic_url);
+                  }
+                });
+          }
+          else {console.log('fail result: 1');}
 
 
                 // Aumenta ou diminui a fonte de acordo com o resultado
