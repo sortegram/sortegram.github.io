@@ -11,7 +11,7 @@ var svdItemCheck1 = document.getElementById( 'saved_item-check-1' ), svdItemChec
     svdItemFakeCheckbox9 = document.getElementById( 'saved_item-cb-9' ), svdItemFakeCheckbox10 = document.getElementById( 'saved_item-cb-10' );
 
 
-console.log('V3.0.2');
+console.log('V3.0.3');
 
 // Altera o numero de participantes do sorteio Sortegram
 function changeNumber ()
@@ -2438,7 +2438,7 @@ function sg_Start ()
           
           
           ////////////////////////////////////
-          if ( sgResult.match( /@/,gi ) )
+          if ( sgResult.match( /@/gi ) )
           {
                 var str = sgResult;
                 var res = str.replace("@", "");
@@ -2708,7 +2708,7 @@ function sg_Start ()
                         .addClass( 'sg_Config-winIcon-' + localStorage.getItem('winner-icon') );
           
           
-          if ( sgResult.match( /@/,gi ) )
+          if ( sgResult.match( /@/gi ) )
           {
                 var str = sgResult;
                 var res = str.replace("@", "");
