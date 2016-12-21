@@ -2666,6 +2666,25 @@ function sg_Start ()
                     })
                       .html('')
                         .before( '<div id="trophy"></div>' );
+          
+
+          
+          if ( sgResult.match( '@' ) )
+          {
+                var str = sgResult;
+                var res = str.replace("@", "");
+              
+                $.ajax({
+                  dataType: "json",
+                  url: 'https://www.instagram.com/' + res + '/?__a=1',
+                  data: data,
+                  success: function (data) {
+                    $( '#trophy' ).css({
+                        'background-image':'url(' + data.user.profile_pic_url + ')'
+                    });
+                  }
+                });
+          }
 
                     for ( i = 0; i <= (j-1); i++ )
                        {
