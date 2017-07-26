@@ -256,7 +256,7 @@ function sg_Save ()
 
                      function saveItem ( itemNumber )
                         {
-                          savedNamesMng = document.getElementById( 'part_List' ).innerHTML;
+                          var savedNamesMng = document.getElementById( 'part_List' ).innerHTML;
                           isNew.checked = false;
                           saveBtn.disabled = true;
                           saveBtn.style.backgroundImage = 'url(img/appbar.saved.png)';
