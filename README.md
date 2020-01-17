@@ -2,7 +2,7 @@
 ====
 Este repositório é onde está hospedado o Sortegram.
 
-Acesse [sortegram.com](http://sortegram.com) para usar a demo do web app.
+Acesse [sortegram.github.io](https://sortegram.github.io) para usar a demo do web app.
 
 Para o repositório oficial, acesse [github.com/Sortegram/Sortegram](http://github.com/Sortegram/Sortegram).
 
