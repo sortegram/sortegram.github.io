@@ -1138,7 +1138,7 @@ background-color: #FC97FF;
 .resizing-input {
   display: inline;
 }
-.resizing-input span, :not(.resizing-input span#numb-plural) {
+.resizing-input span:not(.resizing-input span#numb-plural) {
   display: none;
   font-size: 40px;
 }
